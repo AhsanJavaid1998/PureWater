@@ -29,25 +29,31 @@
                 </a>
             </li>
             <li class="dropdown ">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-shopping-cart"></i> <span>Products</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-shopping-cart"></i> <span>Product</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link " href="">Products</a></li>
-                    <li><a class="nav-link " href="">Add Product</a></li>
-                    <li><a class="nav-link " href="">Menu Category</a></li>
-                    <li><a class="nav-link " href="">Cuisine Category</a></li>
+                    <li><a class="nav-link " href="{{route('admin.product.all')}}">All Products</a></li>
+                    <li><a class="nav-link " href="{{route("admin.product.create")}}">Add Product</a></li>
+{{--                    <li><a class="nav-link " href="">Menu Category</a></li>--}}
+{{--                    <li><a class="nav-link " href="">Cuisine Category</a></li>--}}
                 </ul>
             </li>
 
             <li class="">
-                <a class="nav-link " href="">
+                <a class="nav-link has-dropdown" data-toggle="dropdown" href="#">
                     <i class="fas fa-list-ul"></i> <span>Category</span>
                 </a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link " href="{{route('admin.category.all')}}">All Categories</a></li>
+                    <li><a class="nav-link " href="{{route("admin.category.create")}}">Add Category</a></li>
+                    {{--                    <li><a class="nav-link " href="">Menu Category</a></li>--}}
+                    {{--                    <li><a class="nav-link " href="">Cuisine Category</a></li>--}}
+                </ul>
             </li>
             <li class="dropdown ">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-utensils"></i> <span>Vendor</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link " href="">Vendors Requests</a></li>
-                    <li><a class="nav-link " href="">All Vendors</a></li>
+                    <li><a class="nav-link " href="{{route('admin.vendor.all')}}">All Vendors</a></li>
                     <li><a class="nav-link " href="">Manage Review</a></li>
                 </ul>
             </li>
@@ -55,12 +61,12 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-bicycle"></i> <span>Riders</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link " href="">Rider Requests</a></li>
-                    <li><a class="nav-link " href="">All Riders</a></li>
+                    <li><a class="nav-link " href="{{route('admin.rider.all')}}">All Riders</a></li>
                 </ul>
             </li>
 
             <li class="">
-                <a class="nav-link " href="">
+                <a class="nav-link " href="{{route('admin.customer.all')}}">
                     <i class="fas fa-users"></i> <span>Customers</span>
                 </a>
             </li>
