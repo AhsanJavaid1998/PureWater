@@ -14,7 +14,7 @@
       <div class="d-sm-none d-lg-inline-block">{{ __('Hi') }}, {{ Auth::user()->name }}</div></a>
       <div class="dropdown-menu dropdown-menu-right">
         <div class="dropdown-title">{{ __('My Id #').Auth::id() }}</div>
-        <a href="" class="dropdown-item has-icon">
+        <a href="{{route('rider.profile')}}" class="dropdown-item has-icon">
           <i class="far fa-user"></i> {{ __('Profile') }}
         </a>
         <div class="dropdown-divider"></div>

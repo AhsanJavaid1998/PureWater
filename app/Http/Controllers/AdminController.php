@@ -6,6 +6,27 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    //admin Profile section start
+    public function admin_profile()
+    {
+        return view('backend.admin.profile');
+    }
+    //admin Profile section end
+
+    //vendor Profile section start
+    public function vendor_profile()
+    {
+        return view('backend.vendor.profile');
+    }
+    //vendor Profile section end
+
+    //rider Profile section start
+    public function rider_profile()
+    {
+        return view('backend.rider.profile');
+    }
+    //rider Profile section end
+
     //product section start
     public function product()
     {

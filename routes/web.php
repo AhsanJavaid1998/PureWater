@@ -21,7 +21,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+
 //Admin Section Start
+
+//Admin Profile Section Start
+Route::get('/admin/profile', [App\Http\Controllers\AdminController::class, 'admin_profile'])->name('admin.profile');
+//Admin Profile Section End
 
 //Admin Product Section Start
 Route::get('/admin/product/all', [App\Http\Controllers\AdminController::class, 'product'])->name('admin.product.all');
@@ -45,4 +51,23 @@ Route::get('/admin/rider/all', [App\Http\Controllers\AdminController::class, 'ri
 Route::get('/admin/customer/all', [App\Http\Controllers\AdminController::class, 'customer'])->name('admin.customer.all');
 //Admin Customer Section End
 
+
+
+
 //Admin Section End
+
+//Vendor Section Start
+
+//Vendor Profile Section Start
+Route::get('/vendor/profile', [App\Http\Controllers\AdminController::class, 'vendor_profile'])->name('vendor.profile');
+//Vendor Profile Section End
+
+//Vendor Section End
+
+//Rider Section Start
+
+//Rider Profile Section Start
+Route::get('/rider/profile', [App\Http\Controllers\AdminController::class, 'rider_profile'])->name('rider.profile');
+//Rider Profile Section End
+
+//Rider Section End
