@@ -50,17 +50,16 @@
                 </ul>
             </li>
             <li class="dropdown ">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-utensils"></i> <span>Vendor</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-store"></i> <span>Vendor</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link " href="">Vendors Requests</a></li>
+                    <li><a class="nav-link " href="{{route('admin.vendor.create')}}">Create Vendor Account</a></li>
                     <li><a class="nav-link " href="{{route('admin.vendor.all')}}">All Vendors</a></li>
-                    <li><a class="nav-link " href="">Manage Review</a></li>
                 </ul>
             </li>
             <li class="dropdown ">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-bicycle"></i> <span>Riders</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link " href="">Rider Requests</a></li>
+                    <li><a class="nav-link " href="{{route('admin.rider.create')}}">Create Rider Account</a></li>
                     <li><a class="nav-link " href="{{route('admin.rider.all')}}">All Riders</a></li>
                 </ul>
             </li>

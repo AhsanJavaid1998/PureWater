@@ -65,33 +65,29 @@
 							</tr>
 						</thead>
 						<tbody>
-{{--							@foreach($posts as $post)--}}
-{{--							<tr>--}}
-{{--								<th>--}}
-{{--									<div class="custom-control custom-checkbox">--}}
-{{--										<input type="checkbox" name="ids[]" class="custom-control-input" id="customCheck{{ $post->id }}" value="{{ $post->id }}">--}}
-{{--										<label class="custom-control-label" for="customCheck{{ $post->id }}"></label>--}}
-{{--									</div>--}}
-{{--								</th>--}}
-{{--								<td><img src="{{ asset($post->preview->content) }}" height="50" alt=""></td>--}}
-{{--								<td>--}}
-{{--									{{ $post->title }}--}}
-{{--								</td>--}}
+                        @foreach($users as $user)
+                            <tr>
+                                <th>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="ids[]" class="custom-control-input" id="customCheck{{ $user->id }}" value="{{ $user->id }}">
+                                        <label class="custom-control-label" for="customCheck{{ $user->id }}"></label>
+                                    </div>
+                                </th>
+                                <td>#{{$user->id}}</td>
+                                <td><img src="{{ asset($user->avatar) }}" height="50" alt=""></td>
+                                <td>
+                                    {{ $user->name }}
+                                </td>
 
-{{--								<td>{{ $post->price->price }}</td>--}}
-{{--								<td>{{ $post->order_count }}</td>--}}
-{{--								<td>@if($post->status==1)  Published @elseif($post->status==2)  {{ __('Draft') }} @else {{ __('Trash') }} @endif</td>--}}
-{{--								<td>{{ __('Last Modified') }}--}}
-{{--									<div class="date">--}}
-{{--										{{ $post->updated_at->diffForHumans() }}--}}
-{{--									</div>--}}
-{{--								</td>--}}
-{{--								<td><a href="{{ url('/store/'.$post->user->slug) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>--}}
-{{--							</tr>--}}
-{{--						@endforeach--}}
-					</tbody>
+                                <td>{{ $user->email }}</td>
+                                <td>@if($user->status == '1')  Approved @elseif($user->status== '2')  Pending @endif</td>
+                                <td>{{$user->created_at->diffForHumans()}}</td>
+                                <td><a href="{{--{{ url('/store/'.$post->user->slug) }}--}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
 				</table>
-{{--				{{ $posts->links() }}--}}
+				{{ $users->links() }}
 			</div>
 		</div>
 	</div>

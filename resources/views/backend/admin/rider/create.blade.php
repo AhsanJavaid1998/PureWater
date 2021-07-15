@@ -9,89 +9,66 @@
         }
     </style>
     <div class="row" id="category_body">
-        <div class="col-lg-8 col-md-8">
+        <div class="col-lg-8 col-md-8 offset-2">
             <div class="card">
                 <div class="card-body">
-                    <h4>Add new Product</h4>
-                    <form id="basicform" method="post" action="{{--{{ route('admin.mainCategory.product.store') }}--}}">
+                    <h4>Create Rider Account</h4>
+                    <form id="basicform" class="mt-4" method="POST" action="{{ route('admin.rider.store') }}">
                         @csrf
-                        <div class="custom-form">
-                            <div class="form-group">
-                                <label for="title">{{ __('Product Name') }}</label>
-                                <input type="text" name="title" class="form-control" id="name" placeholder="Product Name">
-                            </div>
-                            <div class="form-group">
-                                <label for="price">{{ __('Slug') }}</label>
-                                <input type="text" name="slug" class="form-control" id="slug" placeholder="Product Slug">
-                            </div>
-                            <div class="form-group">
-                                <label for="price">{{ __('Price') }}</label>
-                                <input type="number" name="price" class="form-control" id="price" placeholder="Product Price    ">
-                            </div>
-                            <div class="form-group">
-                                <label for="description">{{ __('Description') }}</label>
-                                <textarea name="excerpt" class="form-control " cols="30" rows="3" placeholder="Short description" id="excerpt" maxlength="" required=""></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="p_id">{{ __('Parent Category') }}</label>
-                                <select class="custom-select mr-sm-2 p_id" name="p_id" id="p_id inlineFormCustomSelect">
-                                    <option value="">None</option>
-{{--                                    @foreach($parent as $data)--}}
-{{--                                        <option value="{{$data->id}}">{{$data->name}}</option>--}}
-{{--                                    @endforeach--}}
-                                </select>
-                            </div>
-                            <div class="form-group" id="s_cat">
 
-                            </div>
-                            <div class="single-area">
-                                <div class="card sub">
-                                    <div class="card-body">
-                                        <h5><a href="#" data-toggle="modal" data-target=".media-single" class="text-dark">Image</a></h5>
-                                        <hr>
+                        <div class="form-group">
+                            <label for="name" class="col-form-label">{{ __('Name') }}</label>
 
-                                        <input type="file" value="" id="files" class="d-none" name="image" onchange="readURL(this);">
-                                        <label for="files">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                        </div>
 
-                                            <img class="img-fluid" id="preview" src="http://localhost/mealsmash/admin/img/img/placeholder.png">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mt-20">
-                                <button class="btn btn-primary col-12" type="submit">{{ __('Add New Product') }}</button>
-                            </div>
+                        <div class="form-group">
+                            <label for="email" class="col-form-label">{{ __('E-Mail Address') }}</label>
+
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email Address" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-form-label">{{ __('Password') }}</label>
+
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password-confirm" class="col-form-label">{{ __('Confirm Password') }}</label>
+
+                                <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required autocomplete="new-password">
+                        </div>
+
+                        <div class="form-group mb-0">
+                                <button type="submit" class=" btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-md-4">
-                <div class="single-area">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5>Publish</h5>
-                            <hr>
-                            <div class="btn-publish">
-                                <button type="submit" class="btn btn-primary col-12"><i class="fa fa-save"></i> Save</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-area">
-                    <div class="card sub">
-                        <div class="card-body">
-                            <h5>Status</h5>
-                            <hr>
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="status">
-                                <option selected="" value="1">Published</option>
-                                <option value="2">Draft</option>
-
-                            </select>
-                        </div>
-                    </div>
-                </div>
         </div>
 {{--        <div class="col-lg-8" >--}}
 {{--            <div class="card">--}}

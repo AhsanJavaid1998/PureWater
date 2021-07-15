@@ -40,10 +40,14 @@ Route::get('/admin/category/create', [App\Http\Controllers\AdminController::clas
 //Admin Category Section End
 
 //Admin Vendor Section Start
+Route::post('/admin/vendor/store', [App\Http\Controllers\AdminController::class, 'vendor_store'])->name('admin.vendor.store');
+Route::get('/admin/vendor/create', [App\Http\Controllers\AdminController::class, 'vendor_create'])->name('admin.vendor.create');
 Route::get('/admin/vendor/all', [App\Http\Controllers\AdminController::class, 'vendor'])->name('admin.vendor.all');
 //Admin Vendor Section End
 
 //Admin Rider Section Start
+Route::post('/admin/rider/store', [App\Http\Controllers\AdminController::class, 'rider_store'])->name('admin.rider.store');
+Route::get('/admin/rider/create', [App\Http\Controllers\AdminController::class, 'rider_create'])->name('admin.rider.create');
 Route::get('/admin/rider/all', [App\Http\Controllers\AdminController::class, 'rider'])->name('admin.rider.all');
 //Admin Rider Section End
 
