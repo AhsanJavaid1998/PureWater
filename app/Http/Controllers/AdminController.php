@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -21,22 +23,83 @@ class AdminController extends Controller
     //product section start
     public function product()
     {
-        return view('backend.admin.product.index');
+        $products = Product::paginate(12);
+//        dd($products[0]->category());
+        return view('backend.admin.product.index',compact('products'));
     }
     public function productCreate()
     {
-        return view('backend.admin.product.add');
+        $category = Category::all();
+        return view('backend.admin.product.add',compact('category'));
+    }
+    public function product_store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255', 'min:3', 'unique:products'],
+            'image' => ['required'],
+            'detail' => ['required'],
+            'category_id'=>['required'],
+        ]);
+        $file = $request->image;
+        $image = time() . $file->getClientOriginalName();
+        $file->move('uploads/images', $image);
+        if (isset($request->slug))
+        {
+            $slug = $request->slug;
+        }
+        else
+        {
+            $slug=Str::slug($request->name);
+        }
+        $product = new Product();
+        $product->name = $request->name;
+        $product->slug = $slug;
+        $product->avatar = $image;
+        $product->category_id = $request->category_id;
+        $product->detail = $request->detail;
+        $product->status = $request->status;
+        $product->price = $request->price;
+        $product->save();
+        return response()->json('Product Created Successfully');
     }
     //product section end
 
     //category section start
     public function category()
     {
-        return view('backend.admin.category.index');
+        $categories = Category::paginate(12);
+        return view('backend.admin.category.index', compact('categories'));
     }
     public function categoryCreate()
     {
-        return view('backend.admin.category.add');
+        $category = Category::where('parent_id',Null)->get();
+        return view('backend.admin.category.add', compact('category'));
+    }
+    public function category_store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255', 'min:3', 'unique:categories'],
+            'image' => ['required'],
+        ]);
+        $file = $request->image;
+        $image = time() . $file->getClientOriginalName();
+        $file->move('uploads/images', $image);
+        if (isset($request->slug))
+        {
+            $slug = $request->slug;
+        }
+        else
+        {
+            $slug=Str::slug($request->name);
+        }
+        $category = new Category();
+        $category->name = $request->name;
+        $category->slug = $slug;
+        $category->avatar = $image;
+        $category->parent_id = $request->parent_id;
+        $category->status = $request->status;
+        $category->save();
+        return response()->json('Category Created Successfully');
     }
     //category section end
 

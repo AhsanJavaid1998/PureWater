@@ -32,11 +32,13 @@ Route::get('/admin/profile', [App\Http\Controllers\AdminController::class, 'admi
 //Admin Product Section Start
 Route::get('/admin/product/all', [App\Http\Controllers\AdminController::class, 'product'])->name('admin.product.all');
 Route::get('/admin/product/create', [App\Http\Controllers\AdminController::class, 'productCreate'])->name('admin.product.create');
+Route::post('/admin/product/store', [App\Http\Controllers\AdminController::class, 'product_store'])->name('admin.product.store');
 //Admin Product Section End
 
 //Admin Category Section Start
 Route::get('/admin/category/all', [App\Http\Controllers\AdminController::class, 'category'])->name('admin.category.all');
 Route::get('/admin/category/create', [App\Http\Controllers\AdminController::class, 'categoryCreate'])->name('admin.category.create');
+Route::post('/admin/category/store', [App\Http\Controllers\AdminController::class, 'category_store'])->name('admin.category.store');
 //Admin Category Section End
 
 //Admin Vendor Section Start

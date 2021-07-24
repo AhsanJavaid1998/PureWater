@@ -7,20 +7,20 @@
 			<div class="card-body">
 
 				<div class="float-right">
-					<form>
-						<div class="input-group mb-2 col-12">
+{{--					<form>--}}
+{{--						<div class="input-group mb-2 col-12">--}}
 
-							<input type="text" class="form-control" placeholder="Search..."  name="src" autocomplete="off" value="{{ $src ?? '' }}">
-							<select class="form-control" name="type">
-								<option value="title">{{ __('Search By Title') }}</option>
+{{--							<input type="text" class="form-control" placeholder="Search..."  name="src" autocomplete="off" value="{{ $src ?? '' }}">--}}
+{{--							<select class="form-control" name="type">--}}
+{{--								<option value="title">{{ __('Search By Title') }}</option>--}}
 
-								<option value="id">{{ __('Search By Product Id') }}</option>
-							</select>
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-							</div>
-						</div>
-					</form>
+{{--								<option value="id">{{ __('Search By Product Id') }}</option>--}}
+{{--							</select>--}}
+{{--							<div class="input-group-append">--}}
+{{--								<button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>--}}
+{{--							</div>--}}
+{{--						</div>--}}
+{{--					</form>--}}
 				</div>
 				<div class="float-left">
 					<form id="basicform" method="post" action="{{--{{ route('admin.product.destroy') }}--}}">
@@ -41,7 +41,7 @@
 						</div>
 
 					</div>
-					<table class="table">
+					<table class="table text-capitalize">
 						<thead>
 							<tr>
 								<th class="am-select">
@@ -52,10 +52,9 @@
 								</th>
 								<th class="am-title"><i class="far fa-image"></i></th>
 								<th class="am-title">{{ __('Title') }}</th>
-
+                                <th class="am-title">{{ __('Category') }}</th>
 								<th class="am-tags">{{ __('Price') }}</th>
 
-								<th class="am-tags">{{ __('Total Sales') }}</th>
 								<th class="am-tags">{{ __('Status') }}</th>
 
 								<th class="am-date">{{ __('Last Modified') }}</th>
@@ -64,33 +63,33 @@
 							</tr>
 						</thead>
 						<tbody>
-{{--							@foreach($posts as $post)--}}
-{{--							<tr>--}}
-{{--								<th>--}}
-{{--									<div class="custom-control custom-checkbox">--}}
-{{--										<input type="checkbox" name="ids[]" class="custom-control-input" id="customCheck{{ $post->id }}" value="{{ $post->id }}">--}}
-{{--										<label class="custom-control-label" for="customCheck{{ $post->id }}"></label>--}}
-{{--									</div>--}}
-{{--								</th>--}}
-{{--								<td><img src="{{ asset($post->preview->content) }}" height="50" alt=""></td>--}}
-{{--								<td>--}}
-{{--									{{ $post->title }}--}}
-{{--								</td>--}}
+							@foreach($products as $product)
+							<tr>
+								<th>
+									<div class="custom-control custom-checkbox">
+										<input type="checkbox" name="ids[]" class="custom-control-input" id="customCheck{{ $product->id }}" value="{{ $product->id }}">
+										<label class="custom-control-label" for="customCheck{{ $product->id }}"></label>
+									</div>
+								</th>
+								<td><img src="{{ asset('uploads/images/'.$product->avatar) }}" height="50" alt=""></td>
+								<td>
+									{{ $product->name }}
+								</td>
 
-{{--								<td>{{ $post->price->price }}</td>--}}
-{{--								<td>{{ $post->order_count }}</td>--}}
-{{--								<td>@if($post->status==1)  Published @elseif($post->status==2)  {{ __('Draft') }} @else {{ __('Trash') }} @endif</td>--}}
-{{--								<td>{{ __('Last Modified') }}--}}
-{{--									<div class="date">--}}
-{{--										{{ $post->updated_at->diffForHumans() }}--}}
-{{--									</div>--}}
-{{--								</td>--}}
-{{--								<td><a href="{{ url('/store/'.$post->user->slug) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>--}}
-{{--							</tr>--}}
-{{--						@endforeach--}}
+								<td>{{ $product->category->name }}</td>
+								<td>{{ $product->price }}</td>
+								<td>@if($product->status==1)  Published @elseif($product->status==2)  {{ __('Draft') }} @else {{ __('Trash') }} @endif</td>
+								<td>{{ __('Last Modified') }}
+									<div class="date">
+										{{ $product->updated_at->diffForHumans() }}
+									</div>
+								</td>
+								<td><a href="{{--{{ url('/store/'.$post->user->slug) }}--}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+							</tr>
+						@endforeach
 					</tbody>
 				</table>
-{{--				{{ $posts->links() }}--}}
+				{{ $products->links() }}
 			</div>
 		</div>
 	</div>

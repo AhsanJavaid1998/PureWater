@@ -13,16 +13,26 @@
             <div class="card">
                 <div class="card-body">
                     <h4>Add new Product</h4>
-                    <form id="basicform" method="post" action="{{--{{ route('admin.mainCategory.product.store') }}--}}">
+                    <form id="basicform" method="post" action="{{ route('admin.product.store') }}">
                         @csrf
                         <div class="custom-form">
                             <div class="form-group">
                                 <label for="title">{{ __('Product Name') }}</label>
-                                <input type="text" name="title" class="form-control" id="name" placeholder="Product Name">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Product Name">
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="price">{{ __('Slug') }}</label>
                                 <input type="text" name="slug" class="form-control" id="slug" placeholder="Product Slug">
+                                @error('slug')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="price">{{ __('Price') }}</label>
@@ -30,20 +40,28 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">{{ __('Description') }}</label>
-                                <textarea name="excerpt" class="form-control " cols="30" rows="3" placeholder="Short description" id="excerpt" maxlength="" required=""></textarea>
+                                <textarea name="detail" class="form-control " cols="30" rows="3" placeholder="Short description" id="detail" maxlength=""></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="p_id">{{ __('Parent Category') }}</label>
-                                <select class="custom-select mr-sm-2 p_id" name="p_id" id="p_id inlineFormCustomSelect">
+                                <label for="p_id">{{ __('Category') }}</label>
+                                <select class="custom-select mr-sm-2 category_id text-capitalize" name="category_id" id="category_id inlineFormCustomSelect">
                                     <option value="">None</option>
-{{--                                    @foreach($parent as $data)--}}
-{{--                                        <option value="{{$data->id}}">{{$data->name}}</option>--}}
-{{--                                    @endforeach--}}
+                                    @foreach($category as $data)
+                                        <option value="{{$data->id}}">{{$data->name}}</option>
+{{--                                        @php--}}
+{{--                                        $sub = \App\Models\Category::where('parent_id',$data->id)->get();--}}
+{{--                                        @endphp--}}
+{{--                                        @if(count($sub) > 0)--}}
+{{--                                            @foreach($sub as $data2)--}}
+{{--                                                <option value="{{$data2->id}}"> -{{$data2->name}}</option>--}}
+{{--                                            @endforeach--}}
+{{--                                        @endif--}}
+                                    @endforeach
                                 </select>
                             </div>
-                            <div class="form-group" id="s_cat">
+{{--                            <div class="form-group" id="s_cat">--}}
 
-                            </div>
+{{--                            </div>--}}
                             <div class="single-area">
                                 <div class="card sub">
                                     <div class="card-body">
@@ -54,7 +72,7 @@
                                         <label for="files">
 
 
-                                            <img class="img-fluid" id="preview" src="http://localhost/mealsmash/admin/img/img/placeholder.png">
+                                            <img class="img-fluid" id="preview" src="{{asset('admin/img/img/placeholder.png')}}">
                                         </label>
                                     </div>
                                 </div>
@@ -63,22 +81,22 @@
                                 <button class="btn btn-primary col-12" type="submit">{{ __('Add New Product') }}</button>
                             </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>
         <div class="col-lg-4 col-md-4">
-                <div class="single-area">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5>Publish</h5>
-                            <hr>
-                            <div class="btn-publish">
-                                <button type="submit" class="btn btn-primary col-12"><i class="fa fa-save"></i> Save</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="single-area">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-body">--}}
+{{--                            <h5>Publish</h5>--}}
+{{--                            <hr>--}}
+{{--                            <div class="btn-publish">--}}
+{{--                                <button type="submit" class="btn btn-primary col-12"><i class="fa fa-save"></i> Save</button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="single-area">
                     <div class="card sub">
                         <div class="card-body">
@@ -92,6 +110,7 @@
                         </div>
                     </div>
                 </div>
+            </form>
         </div>
 {{--        <div class="col-lg-8" >--}}
 {{--            <div class="card">--}}

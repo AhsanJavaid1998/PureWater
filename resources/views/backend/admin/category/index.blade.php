@@ -7,20 +7,20 @@
 			<div class="card-body">
 
 				<div class="float-right">
-					<form>
-						<div class="input-group mb-2 col-12">
+{{--					<form>--}}
+{{--						<div class="input-group mb-2 col-12">--}}
 
-							<input type="text" class="form-control" placeholder="Search..."  name="src" autocomplete="off" value="{{ $src ?? '' }}">
-							<select class="form-control" name="type">
-								<option value="title">{{ __('Search By Title') }}</option>
+{{--							<input type="text" class="form-control" placeholder="Search..."  name="src" autocomplete="off" value="{{ $src ?? '' }}">--}}
+{{--							<select class="form-control" name="type">--}}
+{{--								<option value="title">{{ __('Search By Title') }}</option>--}}
 
-								<option value="id">{{ __('Search By Product Id') }}</option>
-							</select>
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-							</div>
-						</div>
-					</form>
+{{--								<option value="id">{{ __('Search By Product Id') }}</option>--}}
+{{--							</select>--}}
+{{--							<div class="input-group-append">--}}
+{{--								<button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>--}}
+{{--							</div>--}}
+{{--						</div>--}}
+{{--					</form>--}}
 				</div>
 				<div class="float-left">
 					<form id="basicform" method="post" action="{{--{{ route('admin.product.destroy') }}--}}">
@@ -63,33 +63,32 @@
 							</tr>
 						</thead>
 						<tbody>
-{{--							@foreach($posts as $post)--}}
-{{--							<tr>--}}
-{{--								<th>--}}
-{{--									<div class="custom-control custom-checkbox">--}}
-{{--										<input type="checkbox" name="ids[]" class="custom-control-input" id="customCheck{{ $post->id }}" value="{{ $post->id }}">--}}
-{{--										<label class="custom-control-label" for="customCheck{{ $post->id }}"></label>--}}
-{{--									</div>--}}
-{{--								</th>--}}
-{{--								<td><img src="{{ asset($post->preview->content) }}" height="50" alt=""></td>--}}
-{{--								<td>--}}
-{{--									{{ $post->title }}--}}
-{{--								</td>--}}
+							@foreach($categories as $category)
+							<tr>
+								<th>
+									<div class="custom-control custom-checkbox">
+										<input type="checkbox" name="ids[]" class="custom-control-input" id="customCheck{{ $category->id }}" value="{{ $category->id }}">
+										<label class="custom-control-label" for="customCheck{{ $category->id }}"></label>
+									</div>
+								</th>
+								<td><img src="{{ asset('uploads/images/'.$category->avatar) }}" height="50" alt=""></td>
+								<td>
+									{{ $category->name }}
+								</td>
 
-{{--								<td>{{ $post->price->price }}</td>--}}
-{{--								<td>{{ $post->order_count }}</td>--}}
-{{--								<td>@if($post->status==1)  Published @elseif($post->status==2)  {{ __('Draft') }} @else {{ __('Trash') }} @endif</td>--}}
-{{--								<td>{{ __('Last Modified') }}--}}
-{{--									<div class="date">--}}
-{{--										{{ $post->updated_at->diffForHumans() }}--}}
-{{--									</div>--}}
-{{--								</td>--}}
-{{--								<td><a href="{{ url('/store/'.$post->user->slug) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>--}}
-{{--							</tr>--}}
-{{--						@endforeach--}}
+								<td>{{ $category->slug}}</td>
+								<td>@if($category->status==1)  Published @elseif($category->status==2)  {{ __('Draft') }} @else {{ __('Trash') }} @endif</td>
+								<td>{{ __('Last Modified') }}
+									<div class="date">
+										{{ $category->updated_at->diffForHumans() }}
+									</div>
+								</td>
+								<td><a href="{{--{{ url('/store/'.$post->user->slug) }}--}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+							</tr>
+						@endforeach
 					</tbody>
 				</table>
-{{--				{{ $posts->links() }}--}}
+				{{ $categories->links() }}
 			</div>
 		</div>
 	</div>

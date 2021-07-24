@@ -13,24 +13,38 @@
             <div class="card">
                 <div class="card-body">
                     <h4>Add new Category</h4>
-                    <form id="basicform" method="post" action="{{--{{ route('admin.mainCategory.product.store') }}--}}">
+                    <form id="basicform" method="post" action="{{ route('admin.category.store') }}">
                         @csrf
                         <div class="custom-form">
                             <div class="form-group">
                                 <label for="title">{{ __('Title') }}</label>
-                                <input type="text" name="title" class="form-control" id="name" placeholder="Category Name">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Category Name">
+
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="price">{{ __('Slug') }}</label>
                                 <input type="text" name="slug" class="form-control" id="slug" placeholder="Category Slug">
+
+                                @error('slug')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="p_id">{{ __('Parent Category') }}</label>
-                                <select class="custom-select mr-sm-2 p_id" name="p_id" id="p_id inlineFormCustomSelect">
+                                <select class="custom-select mr-sm-2 parent_id" name="parent_id" id="parent_id inlineFormCustomSelect">
                                     <option value="">None</option>
-{{--                                    @foreach($parent as $data)--}}
-{{--                                        <option value="{{$data->id}}">{{$data->name}}</option>--}}
-{{--                                    @endforeach--}}
+                                    @if(isset($category))
+                                    @foreach($category as $data)
+                                        <option value="{{$data->id}}">{{$data->name}}</option>
+                                    @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="form-group" id="s_cat">
@@ -43,34 +57,40 @@
                                         <hr>
 
                                         <input type="file" value="" id="files" class="d-none" name="image" onchange="readURL(this);">
+
+                                        @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                         <label for="files">
 
 
-                                            <img class="img-fluid" id="preview" src="http://localhost/mealsmash/admin/img/img/placeholder.png">
+                                            <img class="img-fluid" id="preview" src="{{asset('admin/img/img/placeholder.png')}}">
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group mt-20">
-                                <button class="btn btn-primary col-12" type="submit">{{ __('Add New Category') }}</button>
+                                <button class="btn btn-primary col-12 basicbtn" type="submit">{{ __('Add New Category') }}</button>
                             </div>
                         </div>
-                    </form>
+
                 </div>
             </div>
         </div>
         <div class="col-lg-4 col-md-4">
-                <div class="single-area">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5>Publish</h5>
-                            <hr>
-                            <div class="btn-publish">
-                                <button type="submit" class="btn btn-primary col-12"><i class="fa fa-save"></i> Save</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="single-area">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-body">--}}
+{{--                            <h5>Publish</h5>--}}
+{{--                            <hr>--}}
+{{--                            <div class="btn-publish">--}}
+{{--                                <button type="submit" class="btn btn-primary col-12"><i class="fa fa-save"></i> Save</button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="single-area">
                     <div class="card sub">
                         <div class="card-body">
@@ -85,6 +105,7 @@
                     </div>
                 </div>
         </div>
+        </form>
 {{--        <div class="col-lg-8" >--}}
 {{--            <div class="card">--}}
 {{--                <div class="card-body">--}}
@@ -185,23 +206,23 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $(document).ready(function() {
-            $(".p_id").change(function() {
-                var id = $(this).val();
+        {{--$(document).ready(function() {--}}
+        {{--    $(".p_id").change(function() {--}}
+        {{--        var id = $(this).val();--}}
 
-                $.ajax({
-                    url: '{{URL::to('admin/subCategory')}}',
-                    type: 'POST',
-                    data: {'id': id, '_token': '{{csrf_token()}}'},
-                    success: function (response) {
-                        $('#s_cat').empty();
-                        $('#s_cat').append(response);
+        {{--        $.ajax({--}}
+        {{--            url: '{{URL::to('admin/subCategory')}}',--}}
+        {{--            type: 'POST',--}}
+        {{--            data: {'id': id, '_token': '{{csrf_token()}}'},--}}
+        {{--            success: function (response) {--}}
+        {{--                $('#s_cat').empty();--}}
+        {{--                $('#s_cat').append(response);--}}
 
-                    }
+        {{--            }--}}
 
-                });
-            });
-        })
+        {{--        });--}}
+        {{--    });--}}
+        {{--})--}}
 
     </script>
 @endsection
