@@ -9,8 +9,11 @@
   <ul class="navbar-nav navbar-right">
     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
 
-      <img src="{{ asset('admin/img/profile/profile.jpg') }}" alt="" class="rounded-circle mr-1">
-
+        @if(isset(Auth::User()->avatar))
+            <img src="{{asset('uploads/profile/'.Auth::User()->avatar)}}" alt="" class="rounded-circle mr-1" height="30">
+        @else
+            <img src="{{ asset('admin/img/profile/profile.jpg') }}" alt="" class="rounded-circle mr-1">
+        @endif
       <div class="d-sm-none d-lg-inline-block">{{ __('Hi') }}, {{ Auth::user()->name }}</div></a>
       <div class="dropdown-menu dropdown-menu-right">
         <div class="dropdown-title">{{ __('My Id #').Auth::id() }}</div>

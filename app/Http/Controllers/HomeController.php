@@ -28,13 +28,17 @@ class HomeController extends Controller
         {
             return view('backend.admin.dashboard');
         }
-        else if (Auth::User()->role_id == '3')
+        else if (Auth::User()->role_id == '2')
         {
             return view('backend.vendor.dashboard');
         }
-        else if (Auth::User()->role_id == '4')
+        else if (Auth::User()->role_id == '3')
         {
             return view('backend.rider.dashboard');
+        }
+        else if (Auth::User()->role_id == '4')
+        {
+            return view('home');
         }
     }
 }

@@ -41,7 +41,8 @@
 						</div>
 
 					</div>
-					<table class="table">
+
+					<table class="table table-responsive">
 						<thead>
 							<tr>
 								<th class="am-select">
@@ -74,7 +75,12 @@
 									</div>
 								</th>
                                 <td>#{{$user->id}}</td>
-								<td><img src="{{ asset($user->avatar) }}" height="50" alt=""></td>
+								<td>
+                                    @if(isset($user->avatar))
+                                        <img src="{{asset('uploads/profile/'.$user->avatar)}}" height="50" width="70" alt="">
+                                    @else
+                                        <img src="{{asset('admin/img/profile/profile.jpg')}}" height="50" width="70" alt="">
+                                    @endif
 								<td>
 									{{ $user->name }}
 								</td>
@@ -89,6 +95,7 @@
 				</table>
 				{{ $users->links() }}
 			</div>
+            </form>
 		</div>
 	</div>
 </div>

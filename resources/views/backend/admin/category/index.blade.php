@@ -23,7 +23,7 @@
 {{--					</form>--}}
 				</div>
 				<div class="float-left">
-					<form id="basicform" method="post" action="{{--{{ route('admin.product.destroy') }}--}}">
+					<form id="basicform" method="post" action="{{ route('admin.category.destroy') }}">
 						@csrf
 						<div class="d-flex">
 							<div class="single-filter">
@@ -41,7 +41,7 @@
 						</div>
 
 					</div>
-					<table class="table">
+					<table class="table table-responsive">
 						<thead>
 							<tr>
 								<th class="am-select">
@@ -50,13 +50,13 @@
 										<label class="custom-control-label" for="checkAll"></label>
 									</div>
 								</th>
-								<th class="am-title"><i class="far fa-image"></i></th>
+                                <th class="am-title">{{ __('Category ID') }}</th>
+
+                                <th class="am-title"><i class="far fa-image"></i></th>
 								<th class="am-title">{{ __('Title') }}</th>
-
 								<th class="am-tags">{{ __('Slug') }}</th>
-
-								<th class="am-tags">{{ __('Status') }}</th>
-
+                                <th class="am-tags">{{ __('Parent') }}</th>
+                                <th class="am-tags">{{ __('Status') }}</th>
 								<th class="am-date">{{ __('Last Modified') }}</th>
 								<th class="am-date">{{ __('View') }}</th>
 
@@ -71,19 +71,26 @@
 										<label class="custom-control-label" for="customCheck{{ $category->id }}"></label>
 									</div>
 								</th>
-								<td><img src="{{ asset('uploads/images/'.$category->avatar) }}" height="50" alt=""></td>
-								<td>
+                                <td>#{{$category->id}}</td>
+								<td><img src="{{ asset('uploads/images/'.$category->avatar) }}" height="50" width="70" alt=""></td>
+								<td class="text-capitalize">
 									{{ $category->name }}
 								</td>
 
 								<td>{{ $category->slug}}</td>
+                                <td class="text-capitalize">
+                                    @if($category->parent_id ==Null)
+                                        {{'NULL'}}
+                                    @else
+                                    {{$category->parent->name}}</td>
+                                    @endif
 								<td>@if($category->status==1)  Published @elseif($category->status==2)  {{ __('Draft') }} @else {{ __('Trash') }} @endif</td>
 								<td>{{ __('Last Modified') }}
 									<div class="date">
 										{{ $category->updated_at->diffForHumans() }}
 									</div>
 								</td>
-								<td><a href="{{--{{ url('/store/'.$post->user->slug) }}--}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+								<td><a href="{{ url('/admin/category/view/'.$category->slug) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
 							</tr>
 						@endforeach
 					</tbody>

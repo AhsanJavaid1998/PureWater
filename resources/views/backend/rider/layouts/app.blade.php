@@ -56,11 +56,11 @@
 @yield('extra')
 @stack('extra')
 <!-- General JS Scripts -->
-@if(Auth::user()->role_id == 3)
-@if (Amcoders\Plugin\Plugin::is_active('plan')) {
-<input id="saasurls" type="hidden" value="{{ route('store.plancheck') }}">
-@endif
-@endif
+{{--@if(Auth::user()->role_id == 3)--}}
+{{--@if (Amcoders\Plugin\Plugin::is_active('plan')) {--}}
+{{--<input id="saasurls" type="hidden" value="{{ route('store.plancheck') }}">--}}
+{{--@endif--}}
+{{--@endif--}}
 <script src="{{ asset('admin/assets/js/jquery-3.5.1.min.js') }}"></script>
 
 <script src="{{ asset('admin/assets/js/popper.min.js') }}"></script>

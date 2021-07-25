@@ -23,7 +23,7 @@
 {{--					</form>--}}
 				</div>
 				<div class="float-left">
-					<form id="basicform" method="post" action="{{--{{ route('admin.product.destroy') }}--}}">
+					<form id="basicform" method="post" action="{{ route('admin.product.destroy') }}">
 						@csrf
 						<div class="d-flex">
 							<div class="single-filter">
@@ -41,7 +41,7 @@
 						</div>
 
 					</div>
-					<table class="table text-capitalize">
+					<table class="table text-capitalize table-responsive">
 						<thead>
 							<tr>
 								<th class="am-select">
@@ -50,8 +50,11 @@
 										<label class="custom-control-label" for="checkAll"></label>
 									</div>
 								</th>
-								<th class="am-title"><i class="far fa-image"></i></th>
-								<th class="am-title">{{ __('Title') }}</th>
+                                <th class="am-title">{{ __('Product ID') }}</th>
+
+                                <th class="am-title"><i class="far fa-image"></i></th>
+
+                                <th class="am-title">{{ __('Title') }}</th>
                                 <th class="am-title">{{ __('Category') }}</th>
 								<th class="am-tags">{{ __('Price') }}</th>
 
@@ -71,7 +74,11 @@
 										<label class="custom-control-label" for="customCheck{{ $product->id }}"></label>
 									</div>
 								</th>
-								<td><img src="{{ asset('uploads/images/'.$product->avatar) }}" height="50" alt=""></td>
+                                <td>
+                                    # {{$product->id}}
+                                </td>
+								<td>
+                                    <img src="{{ asset('uploads/images/'.$product->avatar) }}" height="50" width="70" alt=""></td>
 								<td>
 									{{ $product->name }}
 								</td>

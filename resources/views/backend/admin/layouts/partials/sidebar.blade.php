@@ -31,8 +31,8 @@
             <li class="dropdown ">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-shopping-cart"></i> <span>Product</span></a>
                 <ul class="dropdown-menu">
+                    <li><a class="nav-link " href="{{route("admin.product.create")}}">Add New Product</a></li>
                     <li><a class="nav-link " href="{{route('admin.product.all')}}">All Products</a></li>
-                    <li><a class="nav-link " href="{{route("admin.product.create")}}">Add Product</a></li>
 {{--                    <li><a class="nav-link " href="">Menu Category</a></li>--}}
 {{--                    <li><a class="nav-link " href="">Cuisine Category</a></li>--}}
                 </ul>
@@ -43,8 +43,9 @@
                     <i class="fas fa-list-ul"></i> <span>Category</span>
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a class="nav-link " href="{{route("admin.category.create")}}">Add New Category</a></li>
+
                     <li><a class="nav-link " href="{{route('admin.category.all')}}">All Categories</a></li>
-                    <li><a class="nav-link " href="{{route("admin.category.create")}}">Add Category</a></li>
                     {{--                    <li><a class="nav-link " href="">Menu Category</a></li>--}}
                     {{--                    <li><a class="nav-link " href="">Cuisine Category</a></li>--}}
                 </ul>

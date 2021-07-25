@@ -27,18 +27,27 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Admin Profile Section Start
 Route::get('/admin/profile', [App\Http\Controllers\AdminController::class, 'admin_profile'])->name('admin.profile');
+Route::post('/admin/profile/update', [App\Http\Controllers\AdminController::class, 'profile_update'])->name('admin.profile.update');
+Route::post('/admin/profile/password_update', [App\Http\Controllers\AdminController::class, 'password_update'])->name('admin.profile.password_update');
+
 //Admin Profile Section End
 
 //Admin Product Section Start
 Route::get('/admin/product/all', [App\Http\Controllers\AdminController::class, 'product'])->name('admin.product.all');
-Route::get('/admin/product/create', [App\Http\Controllers\AdminController::class, 'productCreate'])->name('admin.product.create');
-Route::post('/admin/product/store', [App\Http\Controllers\AdminController::class, 'product_store'])->name('admin.product.store');
+Route::get('/admin/product/create', [App\Http\Controllers\ProductController::class, 'productCreate'])->name('admin.product.create');
+Route::post('/admin/product/store', [App\Http\Controllers\ProductController::class, 'product_store'])->name('admin.product.store');
+Route::post('/admin/product/delete', [App\Http\Controllers\ProductController::class, 'product_delete'])->name('admin.product.destroy');
+
 //Admin Product Section End
 
 //Admin Category Section Start
 Route::get('/admin/category/all', [App\Http\Controllers\AdminController::class, 'category'])->name('admin.category.all');
-Route::get('/admin/category/create', [App\Http\Controllers\AdminController::class, 'categoryCreate'])->name('admin.category.create');
-Route::post('/admin/category/store', [App\Http\Controllers\AdminController::class, 'category_store'])->name('admin.category.store');
+Route::get('/admin/category/create', [App\Http\Controllers\CategoryController::class, 'category_create'])->name('admin.category.create');
+Route::post('/admin/category/store', [App\Http\Controllers\CategoryController::class, 'category_store'])->name('admin.category.store');
+Route::post('/admin/category/delete', [App\Http\Controllers\CategoryController::class, 'category_delete'])->name('admin.category.destroy');
+Route::get('/admin/category/view/{slug}', [App\Http\Controllers\CategoryController::class, 'category_view'])->name('admin.category.view');
+Route::post('/admin/category/update/{id}', [App\Http\Controllers\CategoryController::class, 'category_update'])->name('admin.category.update');
+
 //Admin Category Section End
 
 //Admin Vendor Section Start
@@ -66,6 +75,9 @@ Route::get('/admin/customer/all', [App\Http\Controllers\AdminController::class, 
 
 //Vendor Profile Section Start
 Route::get('/vendor/profile', [App\Http\Controllers\AdminController::class, 'vendor_profile'])->name('vendor.profile');
+Route::post('/vendor/profile/update', [App\Http\Controllers\AdminController::class, 'profile_update'])->name('vendor.profile.update');
+Route::post('/vendor/profile/password_update', [App\Http\Controllers\AdminController::class, 'password_update'])->name('vendor.profile.password_update');
+
 //Vendor Profile Section End
 
 //Vendor Section End
@@ -74,6 +86,9 @@ Route::get('/vendor/profile', [App\Http\Controllers\AdminController::class, 'ven
 
 //Rider Profile Section Start
 Route::get('/rider/profile', [App\Http\Controllers\AdminController::class, 'rider_profile'])->name('rider.profile');
+Route::post('/rider/profile/update', [App\Http\Controllers\AdminController::class, 'profile_update'])->name('rider.profile.update');
+Route::post('/rider/profile/password_update', [App\Http\Controllers\AdminController::class, 'password_update'])->name('rider.profile.password_update');
+
 //Rider Profile Section End
 
 //Rider Section End

@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -17,6 +18,59 @@ class AdminController extends Controller
     {
         return view('backend.admin.profile');
     }
+
+    public function profile_update(Request $request)
+    {
+        if (Auth::user()->email == $request->email)
+        {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255', 'min:3'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+
+            ]);
+        }
+
+        else
+        {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255', 'min:3'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+
+            ]);
+        }
+        if (isset($request->image))
+        {
+            $file = $request->image;
+            $image = time() . $file->getClientOriginalName();
+            $file->move('uploads/profile', $image);
+        }
+        else
+        {
+            $image = Null;
+        }
+
+        $user =User::find(Auth::user()->id);
+        $slug=Str::slug($request->name);
+        $user->slug = $slug;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->avatar = $image;
+        $user->status = 1;
+        $user->save();
+        return response()->json('Profile Updated Successfully');
+    }
+    public function password_update(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+        $user =User::find(Auth::user()->id);
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return response()->json('Password Update Successfully');
+
+    }
+
     //admin Profile section end
 
 
@@ -24,44 +78,9 @@ class AdminController extends Controller
     public function product()
     {
         $products = Product::paginate(12);
-//        dd($products[0]->category());
         return view('backend.admin.product.index',compact('products'));
     }
-    public function productCreate()
-    {
-        $category = Category::all();
-        return view('backend.admin.product.add',compact('category'));
-    }
-    public function product_store(Request $request)
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255', 'min:3', 'unique:products'],
-            'image' => ['required'],
-            'detail' => ['required'],
-            'category_id'=>['required'],
-        ]);
-        $file = $request->image;
-        $image = time() . $file->getClientOriginalName();
-        $file->move('uploads/images', $image);
-        if (isset($request->slug))
-        {
-            $slug = $request->slug;
-        }
-        else
-        {
-            $slug=Str::slug($request->name);
-        }
-        $product = new Product();
-        $product->name = $request->name;
-        $product->slug = $slug;
-        $product->avatar = $image;
-        $product->category_id = $request->category_id;
-        $product->detail = $request->detail;
-        $product->status = $request->status;
-        $product->price = $request->price;
-        $product->save();
-        return response()->json('Product Created Successfully');
-    }
+
     //product section end
 
     //category section start
@@ -70,37 +89,7 @@ class AdminController extends Controller
         $categories = Category::paginate(12);
         return view('backend.admin.category.index', compact('categories'));
     }
-    public function categoryCreate()
-    {
-        $category = Category::where('parent_id',Null)->get();
-        return view('backend.admin.category.add', compact('category'));
-    }
-    public function category_store(Request $request)
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255', 'min:3', 'unique:categories'],
-            'image' => ['required'],
-        ]);
-        $file = $request->image;
-        $image = time() . $file->getClientOriginalName();
-        $file->move('uploads/images', $image);
-        if (isset($request->slug))
-        {
-            $slug = $request->slug;
-        }
-        else
-        {
-            $slug=Str::slug($request->name);
-        }
-        $category = new Category();
-        $category->name = $request->name;
-        $category->slug = $slug;
-        $category->avatar = $image;
-        $category->parent_id = $request->parent_id;
-        $category->status = $request->status;
-        $category->save();
-        return response()->json('Category Created Successfully');
-    }
+
     //category section end
 
     //vendor section start

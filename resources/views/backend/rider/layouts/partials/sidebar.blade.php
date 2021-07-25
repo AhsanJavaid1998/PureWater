@@ -28,15 +28,15 @@
                 {{--                    <i class="far fa-copy"></i> <span>Pages</span>--}}
                 {{--                </a>--}}
                 {{--            </li>--}}
-                <li class="dropdown ">
-                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-shopping-cart"></i> <span>Products</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a class="nav-link " href="">Products</a></li>
-                        <li><a class="nav-link " href="">Add Product</a></li>
-                        <li><a class="nav-link " href="">Menu Category</a></li>
-                        <li><a class="nav-link " href="">Cuisine Category</a></li>
-                    </ul>
-                </li>
+{{--                <li class="dropdown ">--}}
+{{--                    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-shopping-cart"></i> <span>Products</span></a>--}}
+{{--                    <ul class="dropdown-menu">--}}
+{{--                        <li><a class="nav-link " href="">Products</a></li>--}}
+{{--                        <li><a class="nav-link " href="">Add Product</a></li>--}}
+{{--                        <li><a class="nav-link " href="">Menu Category</a></li>--}}
+{{--                        <li><a class="nav-link " href="">Cuisine Category</a></li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
 
                 {{--            <li class="">--}}
                 {{--                <a class="nav-link " href="">--}}

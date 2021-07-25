@@ -68,7 +68,7 @@
                                         <h5><a href="#" data-toggle="modal" data-target=".media-single" class="text-dark">Image</a></h5>
                                         <hr>
 
-                                        <input type="file" value="" id="files" class="d-none" name="image" onchange="readURL(this);">
+                                        <input type="file" value="" id="files" class="d-none" name="image" accept="image/*" onchange="readURL(this);">
                                         <label for="files">
 
 
