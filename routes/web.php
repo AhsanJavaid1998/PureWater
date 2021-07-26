@@ -29,14 +29,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/admin/profile', [App\Http\Controllers\AdminController::class, 'admin_profile'])->name('admin.profile');
 Route::post('/admin/profile/update', [App\Http\Controllers\AdminController::class, 'profile_update'])->name('admin.profile.update');
 Route::post('/admin/profile/password_update', [App\Http\Controllers\AdminController::class, 'password_update'])->name('admin.profile.password_update');
+Route::post('/admin/profile/delete', [App\Http\Controllers\AdminController::class, 'profile_delete'])->name('admin.profile.destroy');
+Route::get('/admin/vendor/profile/view/{id}', [App\Http\Controllers\AdminController::class, 'vendor_profile_view'])->name('admin.vendor.profile.view');
+Route::get('/admin/rider/profile/view/{id}', [App\Http\Controllers\AdminController::class, 'rider_profile_view'])->name('admin.rider.profile.view');
+Route::get('/admin/user/profile/view/{id}', [App\Http\Controllers\AdminController::class, 'user_profile_view'])->name('admin.user.profile.view');
+
+Route::post('/admin/user/profile/update/{id}', [App\Http\Controllers\AdminController::class, 'user_profile_update'])->name('admin.user.profile.update');
+Route::post('/admin/user/profile/password_update/{id}', [App\Http\Controllers\AdminController::class, 'user_password_update'])->name('admin.user.profile.password_update');
 
 //Admin Profile Section End
 
 //Admin Product Section Start
 Route::get('/admin/product/all', [App\Http\Controllers\AdminController::class, 'product'])->name('admin.product.all');
-Route::get('/admin/product/create', [App\Http\Controllers\ProductController::class, 'productCreate'])->name('admin.product.create');
+Route::get('/admin/product/create', [App\Http\Controllers\ProductController::class, 'product_create'])->name('admin.product.create');
 Route::post('/admin/product/store', [App\Http\Controllers\ProductController::class, 'product_store'])->name('admin.product.store');
 Route::post('/admin/product/delete', [App\Http\Controllers\ProductController::class, 'product_delete'])->name('admin.product.destroy');
+Route::get('/admin/product/view/{slug}', [App\Http\Controllers\ProductController::class, 'product_view'])->name('admin.product.view');
+Route::post('/admin/product/update/{id}', [App\Http\Controllers\ProductController::class, 'product_update'])->name('admin.product.update');
 
 //Admin Product Section End
 
@@ -64,6 +73,7 @@ Route::get('/admin/rider/all', [App\Http\Controllers\AdminController::class, 'ri
 
 //Admin Customer Section Start
 Route::get('/admin/customer/all', [App\Http\Controllers\AdminController::class, 'customer'])->name('admin.customer.all');
+
 //Admin Customer Section End
 
 

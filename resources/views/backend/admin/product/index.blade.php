@@ -91,7 +91,7 @@
 										{{ $product->updated_at->diffForHumans() }}
 									</div>
 								</td>
-								<td><a href="{{--{{ url('/store/'.$post->user->slug) }}--}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+								<td><a href="{{ url('/admin/product/view/'.$product->slug) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
 							</tr>
 						@endforeach
 					</tbody>

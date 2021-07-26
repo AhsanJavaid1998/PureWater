@@ -7,23 +7,23 @@
 			<div class="card-body">
 
 				<div class="float-right">
-					<form>
-						<div class="input-group mb-2 col-12">
+{{--					<form>--}}
+{{--						<div class="input-group mb-2 col-12">--}}
 
-							<input type="text" class="form-control" placeholder="Search..."  name="src" autocomplete="off" value="{{ $src ?? '' }}">
-							<select class="form-control" name="type">
-								<option value="title">{{ __('Search By Title') }}</option>
+{{--							<input type="text" class="form-control" placeholder="Search..."  name="src" autocomplete="off" value="{{ $src ?? '' }}">--}}
+{{--							<select class="form-control" name="type">--}}
+{{--								<option value="title">{{ __('Search By Title') }}</option>--}}
 
-								<option value="id">{{ __('Search By Product Id') }}</option>
-							</select>
-							<div class="input-group-append">
-								<button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
-							</div>
-						</div>
-					</form>
+{{--								<option value="id">{{ __('Search By Product Id') }}</option>--}}
+{{--							</select>--}}
+{{--							<div class="input-group-append">--}}
+{{--								<button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>--}}
+{{--							</div>--}}
+{{--						</div>--}}
+{{--					</form>--}}
 				</div>
 				<div class="float-left">
-					<form id="basicform" method="post" action="{{--{{ route('admin.product.destroy') }}--}}">
+					<form id="basicform" method="post" action="{{ route('admin.profile.destroy') }}">
 						@csrf
 						<div class="d-flex">
 							<div class="single-filter">
@@ -88,7 +88,7 @@
                                 <td>{{ $user->email }}</td>
                                 <td>@if($user->status == '1')  Approved @elseif($user->status== '2')  Pending @endif</td>
                                 <td>{{$user->created_at->diffForHumans()}}</td>
-                                <td><a href="{{--{{ url('/store/'.$post->user->slug) }}--}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                                <td><a href="{{ url('/admin/vendor/profile/view/'.$user->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
                             </tr>
                         @endforeach
                         </tbody>

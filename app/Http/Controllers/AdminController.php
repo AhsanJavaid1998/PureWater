@@ -71,6 +71,91 @@ class AdminController extends Controller
 
     }
 
+    public function profile_delete(Request $request)
+    {
+        if ($request->status == 'delete')
+        {
+            if ($request->ids) {
+                foreach ($request->ids as $id) {
+                    User::destroy($id);
+                }
+                return response()->json('Account Removed');
+            }
+
+        }
+    }
+
+    public function vendor_profile_view($id)
+    {
+        $user = User::find($id);
+        return view('backend.admin.vendor.view',compact('user'));
+    }
+    public function rider_profile_view($id)
+    {
+        $user = User::find($id);
+        return view('backend.admin.rider.view',compact('user'));
+    }
+
+    public function user_profile_view($id)
+    {
+        $user = User::find($id);
+        return view('backend.admin.customer.view',compact('user'));
+    }
+
+
+    public function user_profile_update(Request $request,$id)
+    {
+        $user = User::find($id);
+        if ($user->email == $request->email)
+        {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255', 'min:3'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+
+            ]);
+        }
+
+        else
+        {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255', 'min:3'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+
+            ]);
+        }
+        if (isset($request->image))
+        {
+            $file = $request->image;
+            $image = time() . $file->getClientOriginalName();
+            $file->move('uploads/profile', $image);
+        }
+        else
+        {
+            $image = Null;
+        }
+
+        $slug=Str::slug($request->name);
+        $user->slug = $slug;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->avatar = $image;
+        $user->status = 1;
+        $user->save();
+        return response()->json('Profile Updated Successfully');
+    }
+
+    public function user_password_update(Request $request,$id)
+    {
+        $request->validate([
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+        $user =User::find($id);
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return response()->json('Password Update Successfully');
+
+    }
+
     //admin Profile section end
 
 
