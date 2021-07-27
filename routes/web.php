@@ -14,8 +14,50 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.welcome');
 });
+Route::get('/about', function () {
+    return view('frontend.about');
+});
+Route::get('/product', function () {
+    return view('frontend.product');
+});
+
+
+Route::get('/checkout', function () {
+    return view('frontend.checkout');
+});
+Route::get('/contact', function () {
+    return view('frontend.contact');
+});
+Route::get('/cart', function () {
+    return view('frontend.cart');
+});
+Route::get('/blog', function () {
+    return view('frontend.blog');
+});
+Route::get('/blog_detail', function () {
+    return view('frontend.blog_detail');
+});
+
+Route::get('/faq_page', function () {
+    return view('frontend.faq_page');
+});
+Route::get('/pricing', function () {
+    return view('frontend.pricing');
+});
+Route::get('/product_detail', function () {
+    return view('frontend.product_detail');
+});
+Route::get('/team', function () {
+    return view('frontend.team');
+});
+Route::get('/testimonial', function () {
+    return view('frontend.testimonial');
+});
+
+
+
 
 Auth::routes();
 
