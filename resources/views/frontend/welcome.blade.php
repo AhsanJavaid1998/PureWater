@@ -132,8 +132,8 @@
                                         <li class="li"><a href="{{url('/faq_page')}}">Faq</a></li>
                                         <li class="li"><a href="{{url('/team')}}">Team</a></li>
                                         <li class="li"><a href="{{url('/pricing')}}">Pricing</a></li>
-                                        <li class="li"><a href="login.html">Login</a></li>
-                                        <li class="li"><a href="Register.html">Register</a></li>
+                                        <li class="li"><a href="{{route('login')}}">Login</a></li>
+                                        <li class="li"><a href="{{route('register')}}">Register</a></li>
                                     </ul>
 
                                 </li>

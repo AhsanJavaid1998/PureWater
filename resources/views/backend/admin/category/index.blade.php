@@ -41,7 +41,9 @@
 						</div>
 
 					</div>
-					<table class="table table-responsive">
+                <div class="table-responsive">
+
+                <table class="table">
 						<thead>
 							<tr>
 								<th class="am-select">
@@ -95,7 +97,9 @@
 						@endforeach
 					</tbody>
 				</table>
-				{{ $categories->links() }}
+            </div>
+
+            {{ $categories->links() }}
 			</div>
 		</div>
 	</div>

@@ -26,12 +26,12 @@ class ProductController extends Controller
     public function product_store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'min:3', 'unique:products'],
             'image' => ['required'],
-            'detail' => ['required'],
             'category_id'=>['required'],
+            'description' => ['required'],
+            'price'=>['required'],
             'slug' => ['unique:products'],
-
+            'name' => ['required', 'string', 'max:255', 'min:3', 'unique:products'],
         ]);
         $file = $request->image;
         $image = time() . $file->getClientOriginalName();
@@ -49,7 +49,7 @@ class ProductController extends Controller
         $product->slug = $slug;
         $product->avatar = $image;
         $product->category_id = $request->category_id;
-        $product->detail = $request->detail;
+        $product->detail = $request->description;
         $product->status = $request->status;
         $product->price = $request->price;
         $product->save();
@@ -73,34 +73,37 @@ class ProductController extends Controller
         if ($product->slug == $request->slug && $product->name == $request->name)
         {
             $request->validate([
-                'name' => ['required', 'string', 'max:255', 'min:3'],
-                'detail' => ['required'],
                 'category_id'=>['required'],
+                'description' => ['required'],
+                'name' => ['required', 'string', 'max:255', 'min:3'],
+
             ]);
         }
         else if($product->slug == $request->slug && $product->name != $request->name)
         {
             $request->validate([
-                'name' => ['required', 'string', 'max:255', 'min:3', 'unique:products'],
-                'detail' => ['required'],
                 'category_id'=>['required'],
+                'description' => ['required'],
+                'name' => ['required', 'string', 'max:255', 'min:3', 'unique:products'],
+
             ]);
         }
         else if($product->slug != $request->slug && $product->name == $request->name)
         {
             $request->validate([
-                'slug' => ['unique:products'],
-                'detail' => ['required'],
                 'category_id'=>['required'],
+                'description' => ['required'],
+                'slug' => ['unique:products'],
+
             ]);
         }
         else
         {
             $request->validate([
-                'name' => ['required', 'string', 'max:255', 'min:3', 'unique:products'],
-                'slug' => ['unique:products'],
-                'detail' => ['required'],
                 'category_id'=>['required'],
+                'description' => ['required'],
+                'slug' => ['unique:products'],
+                'name' => ['required', 'string', 'max:255', 'min:3', 'unique:products'],
             ]);
         }
 
@@ -116,7 +119,7 @@ class ProductController extends Controller
         $product->slug = $slug;
         $product->avatar = $image;
         $product->category_id = $request->category_id;
-        $product->detail = $request->detail;
+        $product->detail = $request->description;
         $product->status = $request->status;
         $product->price = $request->price;
         $product->save();

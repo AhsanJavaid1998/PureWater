@@ -18,8 +18,8 @@
             </li>
 
             <li class="">
-                <a class="nav-link " href="">
-                    <i class="far fa-images"></i> <span>Media</span>
+                <a class="nav-link " href="{{route('admin.blog.all')}}">
+                    <i class="fab fa-blogger-b"></i> <span>Blog</span>
                 </a>
             </li>
 
@@ -122,6 +122,33 @@
                     <li><a class="nav-link " href="">Earning By Delivery</a></li>
                 </ul>
             </li>
+            <li class="">
+                <a class="nav-link " href="{{route('admin.testimonial.all')}}">
+                    <i class="fas fa-quote-right"></i>
+                    <span>Testimonial</span>
+                </a>
+            </li>
+
+            <li class="">
+                <a class="nav-link " href="{{route('admin.team.all')}}">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Our Team</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="nav-link " href="{{route('admin.faq.all')}}">
+                    <i class="far fa-question-circle"></i>
+                    <span>FAQ</span>
+                </a>
+            </li>
+            <li class="">
+                <a class="nav-link " href="{{route('admin.information.all')}}">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Information</span>
+                </a>
+            </li>
+
+
     {{--            <li class="dropdown ">--}}
     {{--                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-palette"></i> <span>Appearance</span></a>--}}
     {{--                <ul class="dropdown-menu">--}}

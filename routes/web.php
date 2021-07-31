@@ -81,6 +81,67 @@ Route::post('/admin/user/profile/password_update/{id}', [App\Http\Controllers\Ad
 
 //Admin Profile Section End
 
+
+//Admin Blog Section Start
+Route::get('/admin/blog/all', [App\Http\Controllers\BlogController::class, 'index'])->name('admin.blog.all');
+Route::get('/admin/blog/create', [App\Http\Controllers\BlogController::class, 'create'])->name('admin.blog.create');
+Route::post('/admin/blog/store', [App\Http\Controllers\BlogController::class, 'store'])->name('admin.blog.store');
+Route::post('/admin/blog/delete', [App\Http\Controllers\BlogController::class, 'delete'])->name('admin.blog.destroy');
+Route::get('/admin/blog/view/{id}', [App\Http\Controllers\BlogController::class, 'view'])->name('admin.blog.view');
+Route::post('/admin/blog/update/{id}', [App\Http\Controllers\BlogController::class, 'update'])->name('admin.blog.update');
+
+//Admin Blog Section End
+
+//Admin Faq Section Start
+Route::get('/admin/faq/all', [App\Http\Controllers\FaqController::class, 'index'])->name('admin.faq.all');
+Route::get('/admin/faq/create', [App\Http\Controllers\FaqController::class, 'create'])->name('admin.faq.create');
+Route::post('/admin/faq/store', [App\Http\Controllers\FaqController::class, 'store'])->name('admin.faq.store');
+Route::post('/admin/faq/delete', [App\Http\Controllers\FaqController::class, 'delete'])->name('admin.faq.destroy');
+Route::get('/admin/faq/view/{id}', [App\Http\Controllers\FaqController::class, 'view'])->name('admin.faq.view');
+Route::post('/admin/faq/update/{id}', [App\Http\Controllers\FaqController::class, 'update'])->name('admin.faq.update');
+
+//Admin Faq Section End
+
+
+//Admin Testimonial Section Start
+Route::get('/admin/testimonial/all', [App\Http\Controllers\TestimonialController::class, 'index'])->name('admin.testimonial.all');
+Route::get('/admin/testimonial/create', [App\Http\Controllers\TestimonialController::class, 'create'])->name('admin.testimonial.create');
+Route::post('/admin/testimonial/store', [App\Http\Controllers\TestimonialController::class, 'store'])->name('admin.testimonial.store');
+Route::post('/admin/testimonial/delete', [App\Http\Controllers\TestimonialController::class, 'delete'])->name('admin.testimonial.destroy');
+Route::get('/admin/testimonial/view/{id}', [App\Http\Controllers\TestimonialController::class, 'view'])->name('admin.testimonial.view');
+Route::post('/admin/testimonial/update/{id}', [App\Http\Controllers\TestimonialController::class, 'update'])->name('admin.testimonial.update');
+
+//Admin Testimonial Section End
+
+
+//Admin Team Section Start
+Route::get('/admin/team/all', [App\Http\Controllers\TeamController::class, 'index'])->name('admin.team.all');
+Route::get('/admin/team/create', [App\Http\Controllers\TeamController::class, 'create'])->name('admin.team.create');
+Route::post('/admin/team/store', [App\Http\Controllers\TeamController::class, 'store'])->name('admin.team.store');
+Route::post('/admin/team/delete', [App\Http\Controllers\TeamController::class, 'delete'])->name('admin.team.destroy');
+Route::get('/admin/team/view/{id}', [App\Http\Controllers\TeamController::class, 'view'])->name('admin.team.view');
+Route::post('/admin/team/update/{id}', [App\Http\Controllers\TeamController::class, 'update'])->name('admin.team.update');
+
+//Admin Team Section End
+
+//Admin Information Section Start
+Route::get('/admin/information/all', [App\Http\Controllers\InformationController::class, 'index'])->name('admin.information.all');
+Route::get('/admin/information/create', [App\Http\Controllers\InformationController::class, 'create'])->name('admin.information.create');
+Route::post('/admin/information/delete', [App\Http\Controllers\InformationController::class, 'delete'])->name('admin.information.destroy');
+Route::get('/admin/information/view/{id}', [App\Http\Controllers\InformationController::class, 'view'])->name('admin.information.view');
+Route::post('/admin/information/update/{id}', [App\Http\Controllers\InformationController::class, 'update'])->name('admin.information.update');
+//contact Information start
+Route::post('/admin/information/contact/store', [App\Http\Controllers\InformationController::class, 'contact_store'])->name('admin.information.contact.store');
+//contact Information end
+//about Information start
+Route::post('/admin/information/about/store', [App\Http\Controllers\InformationController::class, 'about_store'])->name('admin.information.about.store');
+//about Information end
+
+
+//Admin Information Section End
+
+
+
 //Admin Product Section Start
 Route::get('/admin/product/all', [App\Http\Controllers\AdminController::class, 'product'])->name('admin.product.all');
 Route::get('/admin/product/create', [App\Http\Controllers\ProductController::class, 'product_create'])->name('admin.product.create');

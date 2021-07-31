@@ -38,7 +38,7 @@ class HomeController extends Controller
         }
         else if (Auth::User()->role_id == '4')
         {
-            return view('home');
+            return view('frontend.welcome');
         }
     }
 }

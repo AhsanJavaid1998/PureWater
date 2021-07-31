@@ -24,8 +24,8 @@ class AdminController extends Controller
         if (Auth::user()->email == $request->email)
         {
             $request->validate([
-                'name' => ['required', 'string', 'max:255', 'min:3'],
                 'email' => ['required', 'string', 'email', 'max:255'],
+                'name' => ['required', 'string', 'max:255', 'min:3'],
 
             ]);
         }
@@ -33,8 +33,8 @@ class AdminController extends Controller
         else
         {
             $request->validate([
-                'name' => ['required', 'string', 'max:255', 'min:3'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'name' => ['required', 'string', 'max:255', 'min:3'],
 
             ]);
         }
@@ -109,8 +109,8 @@ class AdminController extends Controller
         if ($user->email == $request->email)
         {
             $request->validate([
-                'name' => ['required', 'string', 'max:255', 'min:3'],
                 'email' => ['required', 'string', 'email', 'max:255'],
+                'name' => ['required', 'string', 'max:255', 'min:3'],
 
             ]);
         }
@@ -118,8 +118,8 @@ class AdminController extends Controller
         else
         {
             $request->validate([
-                'name' => ['required', 'string', 'max:255', 'min:3'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'name' => ['required', 'string', 'max:255', 'min:3'],
 
             ]);
         }
@@ -194,9 +194,10 @@ class AdminController extends Controller
     public function vendor_store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'min:3'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:255', 'min:3'],
+
         ]);
 
         $user = new User();
@@ -230,9 +231,10 @@ class AdminController extends Controller
     public function rider_store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'min:3'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:255', 'min:3'],
+
         ]);
 
         $user = new User();

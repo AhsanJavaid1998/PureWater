@@ -41,7 +41,9 @@
 						</div>
 
 					</div>
-					<table class="table text-capitalize table-responsive">
+                <div class="table-responsive">
+
+                <table class="table text-capitalize">
 						<thead>
 							<tr>
 								<th class="am-select">
@@ -96,6 +98,7 @@
 						@endforeach
 					</tbody>
 				</table>
+                </div>
 				{{ $products->links() }}
 			</div>
 		</div>

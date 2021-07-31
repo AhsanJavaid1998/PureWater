@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">{{ __('Description') }}</label>
-                                <textarea name="detail" class="form-control " cols="30" rows="3" placeholder="Short description" id="detail" maxlength=""></textarea>
+                                <textarea name="description" class="form-control " cols="30" rows="3" placeholder="Short description" id="description" maxlength=""></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="p_id">{{ __('Category') }}</label>
@@ -212,23 +212,6 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $(document).ready(function() {
-            $(".p_id").change(function() {
-                var id = $(this).val();
-
-                $.ajax({
-                    url: '{{URL::to('admin/subCategory')}}',
-                    type: 'POST',
-                    data: {'id': id, '_token': '{{csrf_token()}}'},
-                    success: function (response) {
-                        $('#s_cat').empty();
-                        $('#s_cat').append(response);
-
-                    }
-
-                });
-            });
-        })
 
     </script>
 @endsection

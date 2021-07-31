@@ -41,8 +41,9 @@
 						</div>
 
 					</div>
+                <div class="table-responsive">
 
-					<table class="table table-responsive">
+					<table class="table">
 						<thead>
 							<tr>
 								<th class="am-select">
@@ -93,6 +94,7 @@
 						@endforeach
 					</tbody>
 				</table>
+                </div>
 				{{ $users->links() }}
 			</div>
             </form>

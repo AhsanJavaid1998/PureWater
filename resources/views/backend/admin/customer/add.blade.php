@@ -193,23 +193,6 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $(document).ready(function() {
-            $(".p_id").change(function() {
-                var id = $(this).val();
-
-                $.ajax({
-                    url: '{{URL::to('admin/subCategory')}}',
-                    type: 'POST',
-                    data: {'id': id, '_token': '{{csrf_token()}}'},
-                    success: function (response) {
-                        $('#s_cat').empty();
-                        $('#s_cat').append(response);
-
-                    }
-
-                });
-            });
-        })
 
     </script>
 @endsection

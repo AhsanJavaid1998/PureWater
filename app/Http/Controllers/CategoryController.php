@@ -24,9 +24,10 @@ class CategoryController extends Controller
     public function category_store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'min:3', 'unique:categories'],
-            'slug' => ['unique:categories'],
             'image' => ['required'],
+            'slug' => ['unique:categories'],
+            'name' => ['required', 'string', 'max:255', 'min:3', 'unique:categories'],
+
         ]);
         $file = $request->image;
         $image = time() . $file->getClientOriginalName();
@@ -84,8 +85,9 @@ class CategoryController extends Controller
         else
         {
             $request->validate([
-                'name' => ['required', 'string', 'max:255', 'min:3', 'unique:categories'],
                 'slug' => ['unique:categories'],
+                'name' => ['required', 'string', 'max:255', 'min:3', 'unique:categories'],
+
             ]);
         }
 
