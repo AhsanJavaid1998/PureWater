@@ -836,64 +836,64 @@
 
 <!--====== BACK TO TOP PART ENDS ======-->
 
-<!--====== ACCOUNT POPPUP PART START ======-->
+{{--<!--====== ACCOUNT POPPUP PART START ======-->--}}
 
-<div class="account-popup-area">
-    <div class="account-popup-wrapper">
-        <div class="account-popup-content">
-            <div class="account-top">
-                <div class="account-title">
-                    <h3><span>Create an</span> Account</h3>
-                </div>
-                <a href="javascript:void(0)" class="popup-close">
-                    <span></span>
-                    <span></span>
-                </a>
-            </div>
-            <div class="account-form">
-                <form action="#">
-                    <div class="single-form clearfix">
-                        <div class="form-title text-right">
-                            <p>Email</p>
-                        </div>
-                        <div class="form-input">
-                            <input type="email" name="email" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="single-form clearfix">
-                        <div class="form-title text-right">
-                            <p>Password</p>
-                        </div>
-                        <div class="form-input">
-                            <input type="password" name="password" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="single-form clearfix">
-                        <div class="form-title text-right">
-                            <p>Confirm Password</p>
-                        </div>
-                        <div class="form-input">
-                            <input type="password" name="password" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="single-form clearfix">
-                        <div class="form-input">
-                            <button type="submit">Sing Up</button>
-                        </div>
-                    </div>
+{{--<div class="account-popup-area">--}}
+{{--    <div class="account-popup-wrapper">--}}
+{{--        <div class="account-popup-content">--}}
+{{--            <div class="account-top">--}}
+{{--                <div class="account-title">--}}
+{{--                    <h3><span>Create an</span> Account</h3>--}}
+{{--                </div>--}}
+{{--                <a href="javascript:void(0)" class="popup-close">--}}
+{{--                    <span></span>--}}
+{{--                    <span></span>--}}
+{{--                </a>--}}
+{{--            </div>--}}
+{{--            <div class="account-form">--}}
+{{--                <form action="#">--}}
+{{--                    <div class="single-form clearfix">--}}
+{{--                        <div class="form-title text-right">--}}
+{{--                            <p>Email</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="form-input">--}}
+{{--                            <input type="email" name="email" placeholder="Email">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="single-form clearfix">--}}
+{{--                        <div class="form-title text-right">--}}
+{{--                            <p>Password</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="form-input">--}}
+{{--                            <input type="password" name="password" placeholder="Password">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="single-form clearfix">--}}
+{{--                        <div class="form-title text-right">--}}
+{{--                            <p>Confirm Password</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="form-input">--}}
+{{--                            <input type="password" name="password" placeholder="Password">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="single-form clearfix">--}}
+{{--                        <div class="form-input">--}}
+{{--                            <button type="submit">Sing Up</button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                </form>
-                <div class="single-form clearfix">
-                    <div class="form-input">
-                        <p>Already Have Account? <a href="#">Sing in</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{{--                </form>--}}
+{{--                <div class="single-form clearfix">--}}
+{{--                    <div class="form-input">--}}
+{{--                        <p>Already Have Account? <a href="#">Sing in</a></p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
-<!--====== ACCOUNT POPPUP PART ENDS ======-->
+{{--<!--====== ACCOUNT POPPUP PART ENDS ======-->--}}
 <footer id="footer-part" class="pt-65">
     <div class="container ">
         <div class="newsletter pb-45">
@@ -941,7 +941,7 @@
                             <li><a href="{{url('/about')}}">About Us</a></li>
                             <li><a href="#">Delivery Information</a></li>
                             <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="{{url('/terms_and_conditions')}}">Terms & Conditions</a></li>
                         </ul>
                     </div>
                 </div>
@@ -952,9 +952,9 @@
                     <div class="footer-info">
                         <ul>
                             <li><a href="#">My Account</a></li>
-                            <li><a href="#">Order History</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Newsletter</a></li>
+                            <li><a href="{{url('/order_history')}}">Order History</a></li>
+                            <li><a href="{{url('/wishlist')}}">Wishlist</a></li>
+                            <li><a href="{{url('/blog')}}">Newsletter</a></li>
                             <li><a href="#">Returns</a></li>
                         </ul>
                     </div>

@@ -39,6 +39,13 @@
                                 <input type="number" name="price" class="form-control" id="price" placeholder="Product Price" value="{{$product->price}}">
                             </div>
                             <div class="form-group">
+{{--                            @php--}}
+{{--                                echo htmlspecialchars_decode(stripslashes($product->detail));--}}
+
+{{--                            @endphp--}}
+{{--                                <p>--}}
+{{--                                    {{$product->detail}}--}}
+{{--                                </p>--}}
                                 <label for="description">{{ __('Description') }}</label>
                                 <textarea name="description" class="form-control " cols="30" rows="3" placeholder="Short description" id="description" maxlength="">{{$product->detail}}</textarea>
                             </div>
@@ -86,17 +93,6 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4">
-            {{--                <div class="single-area">--}}
-            {{--                    <div class="card">--}}
-            {{--                        <div class="card-body">--}}
-            {{--                            <h5>Publish</h5>--}}
-            {{--                            <hr>--}}
-            {{--                            <div class="btn-publish">--}}
-            {{--                                <button type="submit" class="btn btn-primary col-12"><i class="fa fa-save"></i> Save</button>--}}
-            {{--                            </div>--}}
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                </div>--}}
             <div class="single-area">
                 <div class="card sub">
                     <div class="card-body">
@@ -116,86 +112,11 @@
             </div>
             </form>
         </div>
-        {{--        <div class="col-lg-8" >--}}
-        {{--            <div class="card">--}}
-        {{--                <div class="card-body">--}}
-        {{--                    --}}{{--                    @php--}}
-        {{--                    --}}{{--                        if (!empty($req)) {--}}
-        {{--                    --}}{{--                            $categeories=App\mainCategory::where('name','LIKE','%'.$req.'%' )->latest()->paginate(12);--}}
-        {{--                    --}}{{--                        }--}}
-        {{--                    --}}{{--                        else{--}}
-        {{--                    --}}{{--                            $categeories=App\mainCategory::latest()->paginate(12);--}}
-        {{--                    --}}{{--                        }--}}
-        {{--                    --}}{{--                    @endphp--}}
-        {{--                    <div class="table-responsive">--}}
-        {{--                        <div class="card-action-filter">--}}
-        {{--                            <form id="basicform1" method="post" action="{{ route('admin.mainCategory.product.destroy') }}">--}}
-        {{--                                @csrf--}}
-        {{--                                <div class="row ml-1 mt-1">--}}
-
-        {{--                                    <div class="form-group">--}}
-        {{--                                        <select class="form-control" name="method">--}}
-        {{--                                            <option>Select Action</option>--}}
-        {{--                                            <option value="delete">Delete Permanently</option>--}}
-        {{--                                        </select>--}}
-        {{--                                    </div>--}}
-
-        {{--                                    <div class="single-filter">--}}
-        {{--                                        <button type="submit" class="btn btn-danger ml-1 mt-1">Apply</button>--}}
-        {{--                                    </div>--}}
-        {{--                                </div>--}}
-
-        {{--                        </div>--}}
-        {{--                        <table class="table category">--}}
-        {{--                            <thead>--}}
-        {{--                            <tr>--}}
-        {{--                                <th class="am-select">--}}
-        {{--                                    <div class="custom-control custom-checkbox">--}}
-        {{--                                        <input type="checkbox" class="custom-control-input checkAll" id="checkAll">--}}
-        {{--                                        <label class="custom-control-label" for="checkAll"></label>--}}
-        {{--                                    </div>--}}
-        {{--                                </th>--}}
-        {{--                                <th class="am-title">{{ __('Title') }}</th>--}}
-        {{--                                <th class="am-title">{{ __('Slug') }}</th>--}}
-        {{--                                <th class="am-title">{{ __('Sub_Category') }}</th>--}}
-        {{--                                <th class="am-title">{{ __('Price') }}</th>--}}
-        {{--                            </tr>--}}
-        {{--                            </thead>--}}
-        {{--                            <tbody>--}}
-        {{--                            @foreach($products as $product)--}}
-        {{--                                <tr>--}}
-        {{--                                    <th>--}}
-        {{--                                        <div class="custom-control custom-checkbox">--}}
-        {{--                                            <input type="checkbox" name="ids[]" class="custom-control-input" id="customCheck{{ $product->id }}" value="{{ $product->id }}">--}}
-        {{--                                            <label class="custom-control-label" for="customCheck{{ $product->id }}"></label>--}}
-        {{--                                        </div>--}}
-        {{--                                    </th>--}}
-        {{--                                    <td>--}}
-        {{--                                        {{ $product->title }}--}}
-        {{--                                        <div class="hover">--}}
-        {{--                                            <a href="{{ route('admin.mainCategory.product.edit',$product->id) }}">{{ __('Edit') }}</a>--}}
-        {{--                                        </div>--}}
-
-        {{--                                    </td>--}}
-        {{--                                    <td>{{ $product->slug }}</td>--}}
-        {{--                                    <td>{{ $product->subCategory->name ?? ''}}</td>--}}
-        {{--                                    <td>{{ $product->price}}</td>--}}
-        {{--                                </tr>--}}
-        {{--                            @endforeach--}}
-
-        {{--                            </tbody>--}}
-        {{--                            </form>--}}
-        {{--                        </table>--}}
-        {{--                        <div class="f-right"></div>--}}
-        {{--                    </div>--}}
-
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
     </div>
 @endsection
 
 @section('script')
+
     <script src="{{ asset('admin/js/form.js') }}"></script>
     <script type="text/javascript">
         "use strict";
@@ -218,4 +139,23 @@
         }
 
     </script>
+{{--    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>--}}
+{{--    <script>--}}
+
+{{--        "use strict";--}}
+{{--        (function ($) {--}}
+
+{{--            CKEDITOR.replace( 'description' );--}}
+
+{{--            $('.use').on('click',function(){--}}
+{{--                $('#preview').attr('src',myradiovalue);--}}
+{{--                $('#image').val(myradiovalue);--}}
+{{--            });--}}
+
+{{--        })(jQuery);--}}
+{{--        //success response will assign here--}}
+{{--        function success(res){--}}
+{{--            location.reload()--}}
+{{--        }--}}
+{{--    </script>--}}
 @endsection

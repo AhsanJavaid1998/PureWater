@@ -12,8 +12,8 @@
         <div class="col-lg-8 col-md-8 offset-2">
             <div class="card">
                 <div class="card-body">
-                    <h4>Create Vendor Account</h4>
-                    <form id="basicform" class="mt-4" method="POST" action="{{ route('admin.vendor.store') }}">
+                    <h4>Create Manager Account</h4>
+                    <form id="basicform" class="mt-4" method="POST" action="{{ route('admin.manager.store') }}">
                         @csrf
 
                         <div class="form-group">

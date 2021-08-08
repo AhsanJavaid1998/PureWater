@@ -1,23 +1,11 @@
  <div class="main-sidebar">
   <aside id="sidebar-wrapper">
     <div class="sidebar-brand">
-        @php
-            use App\Models\Information;
-            $logo = Information::where('type','logo')->first();
-        @endphp
-      <a href="{{url('/')}}">
-          <img src="{{asset('uploads/images/'.$logo->content)}}" alt="Logo">
-          <br>
-          {{ env('APP_NAME') }}
-      </a>
+      <a href="#">{{ env('APP_NAME') }}</a>
 
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-
-        <a class="navbar-brand" href="3">
-
-            {{ Str::limit(env('APP_NAME'), $limit = 1) }}
-        </a>
+      <a href="#" >{{ Str::limit(env('APP_NAME'), $limit = 1) }}</a>
     </div>
     <ul class="sidebar-menu">
         <ul class="sidebar-menu">
@@ -30,69 +18,60 @@
             </li>
 
             <li class="">
-                <a class="nav-link " href="{{route('admin.blog.all')}}">
-                    <i class="fab fa-blogger-b"></i> <span>Blog</span>
+                <a class="nav-link " href="">
+                    <i class="far fa-images"></i> <span>Media</span>
                 </a>
             </li>
 
+{{--            <li class="">--}}
+{{--                <a class="nav-link " href="">--}}
+{{--                    <i class="far fa-copy"></i> <span>Pages</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
             <li class="dropdown ">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-shopping-cart"></i> <span>Product</span></a>
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-shopping-cart"></i> <span>Products</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link " href="{{route("admin.product.create")}}">Add New Product</a></li>
-                    <li><a class="nav-link " href="{{route('admin.product.all')}}">All Products</a></li>
-{{--                    <li><a class="nav-link " href="">Menu Category</a></li>--}}
-{{--                    <li><a class="nav-link " href="">Cuisine Category</a></li>--}}
+                    <li><a class="nav-link " href="">Products</a></li>
+                    <li><a class="nav-link " href="">Add Product</a></li>
+                    <li><a class="nav-link " href="">Menu Category</a></li>
+                    <li><a class="nav-link " href="">Cuisine Category</a></li>
                 </ul>
             </li>
 
-            <li class="">
-                <a class="nav-link has-dropdown" data-toggle="dropdown" href="#">
-                    <i class="fas fa-list-ul"></i> <span>Category</span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link " href="{{route("admin.category.create")}}">Add New Category</a></li>
+{{--            <li class="">--}}
+{{--                <a class="nav-link " href="">--}}
+{{--                    <i class="fas fa-list-ul"></i> <span>Category</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li class="dropdown ">--}}
+{{--                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-utensils"></i> <span>Vendor</span></a>--}}
+{{--                <ul class="dropdown-menu">--}}
+{{--                    <li><a class="nav-link " href="">Vendors Requests</a></li>--}}
+{{--                    <li><a class="nav-link " href="">All Vendors</a></li>--}}
+{{--                    <li><a class="nav-link " href="">Manage Review</a></li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--            <li class="dropdown ">--}}
+{{--                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-bicycle"></i> <span>Riders</span></a>--}}
+{{--                <ul class="dropdown-menu">--}}
+{{--                    <li><a class="nav-link " href="">Rider Requests</a></li>--}}
+{{--                    <li><a class="nav-link " href="">All Riders</a></li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
 
-                    <li><a class="nav-link " href="{{route('admin.category.all')}}">All Categories</a></li>
-                    {{--                    <li><a class="nav-link " href="">Menu Category</a></li>--}}
-                    {{--                    <li><a class="nav-link " href="">Cuisine Category</a></li>--}}
-                </ul>
-            </li>
-            <li class="dropdown ">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-store"></i> <span>Manager</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link " href="{{route('admin.manager.create')}}">Create Manager Account</a></li>
-                    <li><a class="nav-link " href="{{route('admin.manager.all')}}">All Managers</a></li>
-                </ul>
-            </li>
-            <li class="dropdown ">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-user-friends"></i><span>Supervisor</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link " href="{{route('admin.supervisor.create')}}">Create Supervisor Account</a></li>
-                    <li><a class="nav-link " href="{{route('admin.supervisor.all')}}">All Supervisors</a></li>
-                </ul>
-            </li>
-
-            <li class="dropdown ">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-bicycle"></i> <span>Riders</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link " href="{{route('admin.rider.create')}}">Create Rider Account</a></li>
-                    <li><a class="nav-link " href="{{route('admin.rider.all')}}">All Riders</a></li>
-                </ul>
-            </li>
-
-            <li class="">
-                <a class="nav-link " href="{{route('admin.customer.all')}}">
-                    <i class="fas fa-users"></i> <span>Customers</span>
-                </a>
-            </li>
-            <li class="dropdown ">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-wallet"></i> <span>Payouts</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link " href="">Payments Request</a></li>
-                    <li><a class="nav-link " href="">Payments History</a></li>
-                    <li><a class="nav-link " href="">Payout Accounts</a></li>
-                </ul>
-            </li>
+{{--            <li class="">--}}
+{{--                <a class="nav-link " href="">--}}
+{{--                    <i class="fas fa-users"></i> <span>Customers</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li class="dropdown ">--}}
+{{--                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-wallet"></i> <span>Payouts</span></a>--}}
+{{--                <ul class="dropdown-menu">--}}
+{{--                    <li><a class="nav-link " href="">Payments Request</a></li>--}}
+{{--                    <li><a class="nav-link " href="">Payments History</a></li>--}}
+{{--                    <li><a class="nav-link " href="">Payout Accounts</a></li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
             <li class="dropdown ">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-cubes"></i> <span>Orders</span></a>
                 <ul class="dropdown-menu">
@@ -137,33 +116,6 @@
                     <li><a class="nav-link " href="">Earning By Delivery</a></li>
                 </ul>
             </li>
-            <li class="">
-                <a class="nav-link " href="{{route('admin.testimonial.all')}}">
-                    <i class="fas fa-quote-right"></i>
-                    <span>Testimonial</span>
-                </a>
-            </li>
-
-            <li class="">
-                <a class="nav-link " href="{{route('admin.team.all')}}">
-                    <i class="fas fa-layer-group"></i>
-                    <span>Our Team</span>
-                </a>
-            </li>
-            <li class="">
-                <a class="nav-link " href="{{route('admin.faq.all')}}">
-                    <i class="far fa-question-circle"></i>
-                    <span>FAQ</span>
-                </a>
-            </li>
-            <li class="">
-                <a class="nav-link " href="{{route('admin.information.all')}}">
-                    <i class="fas fa-info-circle"></i>
-                    <span>Information</span>
-                </a>
-            </li>
-
-
     {{--            <li class="dropdown ">--}}
     {{--                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-palette"></i> <span>Appearance</span></a>--}}
     {{--                <ul class="dropdown-menu">--}}
@@ -174,13 +126,11 @@
             <li class="dropdown ">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-cogs"></i> <span>Settings</span></a>
                 <ul class="dropdown-menu">
-                    <li><a class="nav-link " href="{{route('admin.site.logo')}}">Site Logo</a></li>
-                    <li><a class="nav-link " href="{{route('admin.site.header')}}">Site Header</a></li>
-
-                    {{--                    <li><a class="nav-link " href="">Seo</a></li>--}}
-{{--                    <li><a class="nav-link " href="">Filesystem</a></li>--}}
-{{--                    <li><a class="nav-link " href="">System Settings</a></li>--}}
-{{--                    <li><a class="nav-link " href="">Payment Settings</a></li>--}}
+                    <li><a class="nav-link " href="">Site Settings</a></li>
+                    <li><a class="nav-link " href="">Seo</a></li>
+                    <li><a class="nav-link " href="">Filesystem</a></li>
+                    <li><a class="nav-link " href="">System Settings</a></li>
+                    <li><a class="nav-link " href="">Payment Settings</a></li>
                 </ul>
             </li>
 {{--            <li class="dropdown ">--}}

@@ -1,6 +1,6 @@
 @extends('backend.admin.layouts.app')
 @section('content')
-@include('backend.admin.layouts.partials.headersection',['title'=>'All Vendors'])
+@include('backend.admin.layouts.partials.headersection',['title'=>'All Managers'])
 <div class="row">
 	<div class="col-12 mt-2">
 		<div class="card">
@@ -52,7 +52,7 @@
 										<label class="custom-control-label" for="checkAll"></label>
 									</div>
 								</th>
-                                <th class="am-title">{{ __('Vendor ID') }}</th>
+                                <th class="am-title">{{ __('Maneger ID') }}</th>
 
                                 <th class="am-title">{{ __('Avatar') }}</th>
 								<th class="am-title">{{ __('Name') }}</th>
@@ -90,7 +90,7 @@
                                 <td>{{ $user->email }}</td>
                                 <td>@if($user->status == '1')  Approved @elseif($user->status== '2')  Pending @endif</td>
                                 <td>{{$user->created_at->diffForHumans()}}</td>
-                                <td><a href="{{ url('/admin/vendor/profile/view/'.$user->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                                <td><a href="{{ url('/admin/manager/profile/view/'.$user->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
                             </tr>
                         @endforeach
                         </tbody>

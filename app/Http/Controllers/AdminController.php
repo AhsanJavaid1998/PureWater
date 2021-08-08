@@ -85,10 +85,15 @@ class AdminController extends Controller
         }
     }
 
-    public function vendor_profile_view($id)
+    public function manager_profile_view($id)
     {
         $user = User::find($id);
-        return view('backend.admin.vendor.view',compact('user'));
+        return view('backend.admin.manager.view',compact('user'));
+    }
+    public function supervisor_profile_view($id)
+    {
+        $user = User::find($id);
+        return view('backend.admin.supervisor.view',compact('user'));
     }
     public function rider_profile_view($id)
     {
@@ -177,21 +182,21 @@ class AdminController extends Controller
 
     //category section end
 
-    //vendor section start
-    public function vendor()
+    //manager section start
+    public function manager()
     {
         $users = User::where('role_id','2')->paginate(12);
-        return view('backend.admin.vendor.index',compact('users'));
+        return view('backend.admin.manager.index',compact('users'));
     }
-    public function vendor_profile()
+    public function manager_profile()
     {
-        return view('backend.vendor.profile');
+        return view('backend.manager.profile');
     }
-    public function vendor_create()
+    public function manager_create()
     {
-        return view('backend.admin.vendor.create');
+        return view('backend.admin.manager.create');
     }
-    public function vendor_store(Request $request)
+    public function manager_store(Request $request)
     {
         $request->validate([
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -209,10 +214,48 @@ class AdminController extends Controller
         $user->status = 1;
         $user->password = Hash::make($request->password);
         $user->save();
-        return response()->json('Vendor Created Successfully');
+        return response()->json('Manager Created Successfully');
     }
 
-    //vendor section end
+    //manager section end
+
+    //supervisor section start
+    public function supervisor()
+    {
+        $users = User::where('role_id','5')->paginate(12);
+        return view('backend.admin.supervisor.index',compact('users'));
+    }
+    public function supervisor_profile()
+    {
+        return view('backend.supervisor.profile');
+    }
+    public function supervisor_create()
+    {
+        return view('backend.admin.supervisor.create');
+    }
+    public function supervisor_store(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:255', 'min:3'],
+
+        ]);
+
+        $user = new User();
+        $slug=Str::slug($request->name);
+        $user->role_id = 5;
+        $user->slug = $slug;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->status = 1;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return response()->json('Supervisor Created Successfully');
+    }
+
+    //supervisor section end
+
 
     //rider section start
     public function rider()

@@ -55,14 +55,14 @@
 
 <!--====== PREALOADER PART START ======-->
 
-<div class="preloader">
-    <div class="thecube">
-        <div class="cube c1"></div>
-        <div class="cube c2"></div>
-        <div class="cube c4"></div>
-        <div class="cube c3"></div>
-    </div>
-</div>
+{{--<div class="preloader">--}}
+{{--    <div class="thecube">--}}
+{{--        <div class="cube c1"></div>--}}
+{{--        <div class="cube c2"></div>--}}
+{{--        <div class="cube c4"></div>--}}
+{{--        <div class="cube c3"></div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 <!--====== PREALOADER PART START ======-->
 
@@ -194,7 +194,7 @@
                             <li><a href="{{url('/about')}}">About Us</a></li>
                             <li><a href="#">Delivery Information</a></li>
                             <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="{{url('/terms_and_conditions')}}">Terms & Conditions</a></li>
                         </ul>
                     </div>
                 </div>
@@ -205,9 +205,9 @@
                     <div class="footer-info">
                         <ul>
                             <li><a href="#">My Account</a></li>
-                            <li><a href="#">Order History</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Newsletter</a></li>
+                            <li><a href="{{url('/order_history')}}">Order History</a></li>
+                            <li><a href="{{url('/wishlist')}}">Wishlist</a></li>
+                            <li><a href="{{url('/blog')}}">Newsletter</a></li>
                             <li><a href="#">Returns</a></li>
                         </ul>
                     </div>

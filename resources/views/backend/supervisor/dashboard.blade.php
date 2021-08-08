@@ -1,7 +1,7 @@
 @section('style')
 
 @endsection
-@extends('backend.admin.layouts.app')
+@extends('backend.manager.layouts.app')
 
 @section('content')
 <section class="section">
@@ -9,7 +9,7 @@
     <h1>{{ __('Dashboard') }}</h1>
   </div>
   <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
       <div class="card card-statistic-1">
         <div class="card-icon bg-primary">
           <i class="fas fa-money-bill"></i>
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
       <div class="card card-statistic-1">
         <div class="card-icon bg-danger">
           <i class="fas fa-hand-holding-usd"></i>
@@ -39,73 +39,38 @@
         </div>
       </div>
     </div>
-      <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-          <div class="card card-statistic-1">
-              <div class="card-icon bg-success">
-                  <i class="fas fa-users"></i>
-              </div>
-              <div class="card-wrap">
-                  <div class="card-header">
-                      <h4>{{ __('Total Customers') }}</h4>
-                  </div>
-                  <div class="card-body">
-                       {{ number_format($customer) }}
-                  </div>
-              </div>
-          </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+      <div class="card card-statistic-1">
+        <div class="card-icon bg-warning">
+         <i class="fas fa-utensils"></i>
+       </div>
+       <div class="card-wrap">
+        <div class="card-header">
+          <h4>{{ __('Total Restaurant') }}</h4>
+        </div>
+        <div class="card-body">
+{{--          {{ number_format($resturents) }}--}}
+        </div>
       </div>
-
-</div>
-    <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
-                    <i class="fas fa-store"></i>
-                </div>
-                <div class="card-wrap">
-                    <div class="card-header">
-                        <h4>{{ __('Total Manager') }}</h4>
-                    </div>
-                    <div class="card-body">
-                          {{ number_format($manager) }}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <div class="card card-statistic-1">
-                <div class="card-icon bg-info">
-                    <i class="fas fa-user-friends"></i>
-                </div>
-                <div class="card-wrap">
-                    <div class="card-header">
-                        <h4>{{ __('Total Supervisor') }}</h4>
-                    </div>
-                    <div class="card-body">
-                        {{ number_format($supervisor) }}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <div class="card card-statistic-1">
-                <div class="card-icon bg-dark">
-                    <i class="fas fa-bicycle"></i>
-                </div>
-                <div class="card-wrap">
-                    <div class="card-header">
-                        <h4>{{ __('Total Rider') }}</h4>
-                    </div>
-                    <div class="card-body">
-                        {{ number_format($rider) }}
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
-
-    <div class="row">
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+    <div class="card card-statistic-1">
+      <div class="card-icon bg-success">
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="card-wrap">
+        <div class="card-header">
+          <h4>{{ __('Total Customers') }}</h4>
+        </div>
+        <div class="card-body">
+{{--         {{ number_format($customers) }}--}}
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+<div class="row">
   <div class="col-lg-4 col-md-6 col-sm-12">
     <div class="card card-statistic-2">
       <div class="card-stats">
@@ -212,8 +177,112 @@
   </div>
 
 </div>
+
 <div class="row">
-  <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+ <div class="col-lg-6 col-md-6 col-12">
+
+  <div class="card">
+    <div class="card-header">
+      <h4 class="d-inline">{{ __('New Resturent Request') }}</h4>
+      <div class="card-header-action">
+        <a href="{{--{{ url('/admin/resturents/requests') }}--}}" class="btn btn-primary">{{ __('View All') }}</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul class="list-unstyled list-unstyled-border">
+
+{{--        @foreach($requestResturent as $row)--}}
+{{--        <li class="media">--}}
+{{--          <img class="mr-3 rounded-circle" width="50" src="{{ asset($row->avatar) }}" alt="">--}}
+{{--          <div class="media-body">--}}
+{{--            @if(empty($row->email_verified_at))--}}
+{{--            <div class="badge badge-pill badge-danger mb-1 float-right">{{  __('Not Verified') }}</div>--}}
+{{--            @else--}}
+{{--            <div class="badge badge-pill badge-success mb-1 float-right">{{ __('Verified') }}</div>--}}
+{{--            @endif--}}
+{{--            <h6 class="media-title"><a href="{{ url('/admin/user',$row->id) }}">{{ $row->name }}</a></h6>--}}
+{{--            <div class="text-small text-muted">{{ $row->email }} <div class="bullet"></div> <span class="text-primary">{{ $row->created_at->diffforHumans() }}</span></div>--}}
+{{--          </div>--}}
+{{--        </li>--}}
+{{--        @endforeach--}}
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="col-lg-6 col-md-6 col-12">
+
+  <div class="card">
+    <div class="card-header">
+      <h4 class="d-inline">{{ __('New Rider Request') }}</h4>
+      <div class="card-header-action">
+        <a href="{{--{{ url('/admin/rider/requests') }}--}}" class="btn btn-primary">{{ __('View All') }}</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul class="list-unstyled list-unstyled-border">
+{{--        @foreach($requestRider as $row)--}}
+{{--        <li class="media">--}}
+{{--          <img class="mr-3 rounded-circle" width="50" src="{{ asset($row->avatar) }}" alt="">--}}
+{{--          <div class="media-body">--}}
+{{--            @if(empty($row->email_verified_at))--}}
+{{--            <div class="badge badge-pill badge-danger mb-1 float-right">{{  __('Not Verified') }}</div>--}}
+{{--            @else--}}
+{{--            <div class="badge badge-pill badge-success mb-1 float-right">{{ __('Verified') }}</div>--}}
+{{--            @endif--}}
+{{--            <h6 class="media-title"><a href="{{ url('/admin/user',$row->id) }}">{{ $row->name }}</a></h6>--}}
+{{--            <div class="text-small text-muted">{{ $row->email }} <div class="bullet"></div> <span class="text-primary">{{ $row->created_at->diffforHumans() }}</span></div>--}}
+{{--          </div>--}}
+{{--        </li>--}}
+{{--        @endforeach--}}
+
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+<div class="row">
+  <div class="col-lg-5 col-md-12 col-12 col-sm-12">
+    <form id="basicform" method="post" class="needs-validation" novalidate="" action="{{--{{ route('admin.announcement') }}--}}">
+      @csrf
+    {{--  @php
+      $json=json_decode($announcement->value ?? '');
+
+      @endphp--}}
+      <div class="card">
+        <div class="card-header">
+          <h4>{{ __('Announcement') }}</h4>
+        </div>
+        <div class="card-body pb-0">
+          <div class="form-group">
+            <label>{{ __('Title') }}</label>
+            <input type="text" name="title" class="form-control"  required="" value="{{--{{ $json->title ?? '' }}--}}">
+            <div class="invalid-feedback">
+              Please fill in the title
+            </div>
+          </div>
+          <div class="form-group">
+            <label>{{ __('Message') }}</label>
+            <textarea class="form-control" required name="message">{{--{{ $json->message ?? '' }}--}}</textarea>
+
+            <div class="invalid-feedback">
+              Please fill in the title
+            </div>
+          </div>
+          <div class="form-group">
+            <label>{{ __('Status') }}</label>
+{{--            <select class="form-control" name="status">--}}
+{{--              <option value="1" @if($announcement->lang ?? '' == 1) selected="" @endif>{{{ __('Show') }}}</option> --}}
+{{--              <option value="0" @if($announcement->lang ?? '' == 0) selected="" @endif>{{ __('Hide') }}</option> --}}
+{{--            </select>--}}
+          </div>
+        </div>
+        <div class="card-footer pt-0">
+          <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-lg-7 col-md-12 col-12 col-sm-12">
     <div class="card">
       <div class="card-header">
         <h4>{{ __('New Order') }}</h4>
@@ -228,7 +297,7 @@
               <tr>
                 <th>{{ __('Order Type') }}</th>
                 <th>{{ __('Amount') }}</th>
-                <th>{{ __('Customer') }}</th>
+                <th>{{ __('Author') }}</th>
                 <th>{{ __('Action') }}</th>
               </tr>
             </thead>

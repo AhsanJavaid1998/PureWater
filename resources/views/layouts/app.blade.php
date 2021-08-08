@@ -301,8 +301,8 @@
 
 </footer>
 <!--====== jquery js ======-->
-<script src="{{asset('js/vendor/modernizr-3.6.0.min.js')}}"></script>
-<script src="{{asset('js/vendor/jquery-1.12.4.min.js')}}"></script>
+<script src="{{asset('js/manager/modernizr-3.6.0.min.js')}}"></script>
+<script src="{{asset('js/manager/jquery-1.12.4.min.js')}}"></script>
 
 <!--====== Bootstrap js ======-->
 <script src="{{asset('js/popper.min.js')}}"></script>

@@ -1,7 +1,7 @@
 @section('style')
 
 @endsection
-@extends('backend.vendor.layouts.app')
+@extends('backend.manager.layouts.app')
 
 @section('content')
 <section class="section">
@@ -314,7 +314,7 @@
                 </td>
                 <td>{{--{{ number_format($row->total+$row->shipping) }}--}}</td>
                 <td>
-                  <a href="{{--{{ url('/admin/user',$row->vendor_id) }}--}}" class="font-weight-600"><img src="{{--{{ asset($row->vendor->avatar ?? null) }}--}}" alt="" width="30" class="rounded-circle mr-1"> {{--{{ $row->vendor->name ?? null }--}}</a>
+                  <a href="{{--{{ url('/admin/user',$row->vendor_id) }}--}}" class="font-weight-600"><img src="{{--{{ asset($row->manager->avatar ?? null) }}--}}" alt="" width="30" class="rounded-circle mr-1"> {{--{{ $row->manager->name ?? null }--}}</a>
                 </td>
                 <td>
                   <a href="{{--{{ url('/admin/order',$row->id) }}--}}" class="btn btn-primary btn-action mr-1"><i class="fas fa-eye"></i></a>

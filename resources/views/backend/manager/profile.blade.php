@@ -1,4 +1,4 @@
-@extends('backend.vendor.layouts.app')
+@extends('backend.manager.layouts.app')
 
 @section('content')
     <style>
@@ -46,7 +46,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4>Edit Genaral Settings</h4>
-                    <form id="basicform" method="post" action="{{ route('vendor.profile.update') }}">
+                    <form id="basicform" method="post" action="{{ route('manager.profile.update') }}">
                         @csrf
                         <div class="custom-form">
                             <div class="col-lg-12">
@@ -84,7 +84,7 @@
                 <div class="card sub">
                     <div class="card-body">
                         <h4>Change Password</h4>
-                        <form class="basicform" method="post" action="{{ route('vendor.profile.password_update') }}">
+                        <form class="basicform" method="post" action="{{ route('manager.profile.password_update') }}">
                             @csrf
                             <div class="custom-form">
 {{--                                <div class="form-group">--}}

@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test', function(){
+    Artisan::call('view:clear');
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    return 123;
+});
+
 
 Route::get('/', function () {
     return view('frontend.welcome');
@@ -55,7 +63,15 @@ Route::get('/team', function () {
 Route::get('/testimonial', function () {
     return view('frontend.testimonial');
 });
-
+Route::get('/terms_and_conditions', function () {
+    return view('frontend.term');
+});
+Route::get('/wishlist', function () {
+    return view('frontend.wishlist');
+});
+Route::get('/order_history', function () {
+    return view('frontend.order_history');
+});
 
 
 
@@ -72,7 +88,8 @@ Route::get('/admin/profile', [App\Http\Controllers\AdminController::class, 'admi
 Route::post('/admin/profile/update', [App\Http\Controllers\AdminController::class, 'profile_update'])->name('admin.profile.update');
 Route::post('/admin/profile/password_update', [App\Http\Controllers\AdminController::class, 'password_update'])->name('admin.profile.password_update');
 Route::post('/admin/profile/delete', [App\Http\Controllers\AdminController::class, 'profile_delete'])->name('admin.profile.destroy');
-Route::get('/admin/vendor/profile/view/{id}', [App\Http\Controllers\AdminController::class, 'vendor_profile_view'])->name('admin.vendor.profile.view');
+Route::get('/admin/manager/profile/view/{id}', [App\Http\Controllers\AdminController::class, 'manager_profile_view'])->name('admin.manager.profile.view');
+Route::get('/admin/supervisor/profile/view/{id}', [App\Http\Controllers\AdminController::class, 'supervisor_profile_view'])->name('admin.supervisor.profile.view');
 Route::get('/admin/rider/profile/view/{id}', [App\Http\Controllers\AdminController::class, 'rider_profile_view'])->name('admin.rider.profile.view');
 Route::get('/admin/user/profile/view/{id}', [App\Http\Controllers\AdminController::class, 'user_profile_view'])->name('admin.user.profile.view');
 
@@ -130,15 +147,22 @@ Route::get('/admin/information/create', [App\Http\Controllers\InformationControl
 Route::post('/admin/information/delete', [App\Http\Controllers\InformationController::class, 'delete'])->name('admin.information.destroy');
 Route::get('/admin/information/view/{id}', [App\Http\Controllers\InformationController::class, 'view'])->name('admin.information.view');
 Route::post('/admin/information/update/{id}', [App\Http\Controllers\InformationController::class, 'update'])->name('admin.information.update');
-//contact Information start
-Route::post('/admin/information/contact/store', [App\Http\Controllers\InformationController::class, 'contact_store'])->name('admin.information.contact.store');
-//contact Information end
-//about Information start
-Route::post('/admin/information/about/store', [App\Http\Controllers\InformationController::class, 'about_store'])->name('admin.information.about.store');
-//about Information end
 
+Route::post('/admin/information/contact/store', [App\Http\Controllers\InformationController::class, 'contact_store'])->name('admin.information.contact.store');
+Route::post('/admin/information/about/store', [App\Http\Controllers\InformationController::class, 'about_store'])->name('admin.information.about.store');
+Route::post('/admin/information/term/store', [App\Http\Controllers\InformationController::class, 'term_store'])->name('admin.information.term.store');
+Route::post('/admin/information/delivery/store', [App\Http\Controllers\InformationController::class, 'delivery_store'])->name('admin.information.delivery.store');
 
 //Admin Information Section End
+
+//Admin Site Section Start
+Route::get('/admin/site/logo', [App\Http\Controllers\InformationController::class, 'logo'])->name('admin.site.logo');
+Route::get('/admin/site/header', [App\Http\Controllers\InformationController::class, 'header'])->name('admin.site.header');
+
+Route::post('/admin/information/logo/store', [App\Http\Controllers\InformationController::class, 'logo_store'])->name('admin.information.logo.store');
+Route::post('/admin/information/header/store', [App\Http\Controllers\InformationController::class, 'header_store'])->name('admin.information.header.store');
+
+//Admin Site Section End
 
 
 
@@ -162,11 +186,18 @@ Route::post('/admin/category/update/{id}', [App\Http\Controllers\CategoryControl
 
 //Admin Category Section End
 
-//Admin Vendor Section Start
-Route::post('/admin/vendor/store', [App\Http\Controllers\AdminController::class, 'vendor_store'])->name('admin.vendor.store');
-Route::get('/admin/vendor/create', [App\Http\Controllers\AdminController::class, 'vendor_create'])->name('admin.vendor.create');
-Route::get('/admin/vendor/all', [App\Http\Controllers\AdminController::class, 'vendor'])->name('admin.vendor.all');
-//Admin Vendor Section End
+//Admin Manager Section Start
+Route::post('/admin/manager/store', [App\Http\Controllers\AdminController::class, 'manager_store'])->name('admin.manager.store');
+Route::get('/admin/manager/create', [App\Http\Controllers\AdminController::class, 'manager_create'])->name('admin.manager.create');
+Route::get('/admin/manager/all', [App\Http\Controllers\AdminController::class, 'manager'])->name('admin.manager.all');
+//Admin Manager Section End
+
+
+//Admin Supervisor Section Start
+Route::post('/admin/supervisor/store', [App\Http\Controllers\AdminController::class, 'supervisor_store'])->name('admin.supervisor.store');
+Route::get('/admin/supervisor/create', [App\Http\Controllers\AdminController::class, 'supervisor_create'])->name('admin.supervisor.create');
+Route::get('/admin/supervisor/all', [App\Http\Controllers\AdminController::class, 'supervisor'])->name('admin.supervisor.all');
+//Admin Supervisor Section End
 
 //Admin Rider Section Start
 Route::post('/admin/rider/store', [App\Http\Controllers\AdminController::class, 'rider_store'])->name('admin.rider.store');
@@ -187,9 +218,9 @@ Route::get('/admin/customer/all', [App\Http\Controllers\AdminController::class, 
 //Vendor Section Start
 
 //Vendor Profile Section Start
-Route::get('/vendor/profile', [App\Http\Controllers\AdminController::class, 'vendor_profile'])->name('vendor.profile');
-Route::post('/vendor/profile/update', [App\Http\Controllers\AdminController::class, 'profile_update'])->name('vendor.profile.update');
-Route::post('/vendor/profile/password_update', [App\Http\Controllers\AdminController::class, 'password_update'])->name('vendor.profile.password_update');
+Route::get('/manager/profile', [App\Http\Controllers\AdminController::class, 'vendor_profile'])->name('manager.profile');
+Route::post('/manager/profile/update', [App\Http\Controllers\AdminController::class, 'profile_update'])->name('manager.profile.update');
+Route::post('/manager/profile/password_update', [App\Http\Controllers\AdminController::class, 'password_update'])->name('manager.profile.password_update');
 
 //Vendor Profile Section End
 
